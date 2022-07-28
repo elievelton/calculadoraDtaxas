@@ -6,6 +6,9 @@ import Home from './pages/Home'
 import Contato from './pages/Contato'
 import Ofertas from './pages/Ofertas'
 import Login from './pages/Login'
+import Sobre from "./pages/Sobre";
+import DashboardUser from "./pages/DashboardUser";
+import Admin from "./pages/Admin";
 
 //importando so componentes da página
 import Header from './components/Header'
@@ -24,6 +27,9 @@ function RoutesApp(){
                 <Route path='/contato' element = {<Contato/>}/>
                 <Route path='/ofertas' element = {<Ofertas/>}/>
                 <Route path='/login' element = {<Login/>}/>
+                <Route path='/sobre' element = {<Sobre/>}/>
+                <Route path='/dashboarduser' element = {<DashboardUser/>}/>
+                <Route path='/admin' element = {<Admin/>}/>
             </Routes>
         <Footer/>
         </BrowserRouter>

@@ -1,7 +1,11 @@
+
+
 function Footer() {
     return(
         <div>
-            <h1>Footer da Página</h1>
+        <Footer>
+            <h1>Footer</h1>
+        </Footer>
         </div>
 
     );

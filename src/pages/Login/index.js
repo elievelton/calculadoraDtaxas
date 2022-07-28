@@ -1,7 +1,7 @@
 function Login() {
     return(
         <div>
-            <h1>Página de ofertas</h1>
+            <h1>Página de Login</h1>
         </div>
 
     );
