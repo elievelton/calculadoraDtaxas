@@ -14,6 +14,17 @@
     --textColor: #ffffff;
 }
 
+.home{
+    height: 750px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #2ecc71;
+
+}
+
+
 
 header{
     display: flex;
@@ -29,6 +40,7 @@ nav a{
     margin: 0 2rem;
     color:var(--textColor);
     text-decoration: none;
+    font-size: 1.5rem
 }
 
 nav a:hover{
@@ -45,6 +57,10 @@ header .nav-btn{
     visibility: hidden;
     opacity: 0;
     font-size: 1.8rem;
+}
+.active {
+    
+    color: #2ecc71;
 }
 
 @media only screen and (max-width: 1024px) {

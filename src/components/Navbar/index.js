@@ -1,5 +1,7 @@
-import {FaBars, FaTimes} from "react-icons/fa";
+import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaOutdent} from "react-icons/fa";
 import {useRef} from "react";
+import React from 'react';
+import { NavLink } from "react-router-dom";
 
 
 function Navbar() {
@@ -12,12 +14,12 @@ function Navbar() {
         
         <header>
             <h3>Logo</h3>
-            <nav ref= {navRef}>
-                <a href="/">Home</a>
-                <a href="/contato">Contato</a>
-                <a href="/sobre">Sobre</a>
-                <a href="/ofertas">Ofertas</a>
-                <a href="/login">Login/Cadastro</a>
+            <nav  ref= {navRef}>
+                <NavLink to="/"activeClassName="active"><FaHome size="1.8rem"/>Home</NavLink>
+                <NavLink to="/sobre"activeClassName="active"><FaOutdent/>Sobre</NavLink>
+                <NavLink to="/contato"activeClassName="active"><FaEnvelope/>Contato</NavLink>                
+                <NavLink to="/ofertas"activeClassName="active"><FaFire/>Ofertas</NavLink>
+                <NavLink to="/login"activeClassName="active"><FaUserCircle/>Login/Cadastro</NavLink>
                 <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                     <FaTimes/>
                 </button>
