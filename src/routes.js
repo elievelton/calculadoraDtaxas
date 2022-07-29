@@ -7,6 +7,9 @@ import Contato from './pages/Contato';
 import Ofertas from './pages/Ofertas';
 import Login from './pages/Login';
 import Sobre from "./pages/Sobre";
+import Cadastro from "./pages/Cadastro";
+
+import { AuthProvider } from "./context/AuthContext";
 
 
 //importando so componentes da página;
@@ -18,7 +21,8 @@ import Footer from './components/Footer';
 
 function RoutesApp(){
     return (
-        <BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
         <div className="conteiner">
         <Header/>
         <Navbar/>
@@ -28,6 +32,9 @@ function RoutesApp(){
                 <Route path='/ofertas' element = {<Ofertas/>}/>
                 <Route path='/login' element = {<Login/>}/>
                 <Route path='/sobre' element = {<Sobre/>}/>
+                <Route path='/cadastro' element = {<Cadastro/>}/>
+
+
                 
             </Routes>
         <Footer/>
@@ -35,6 +42,7 @@ function RoutesApp(){
             </div>
         
         </BrowserRouter>
+        </AuthProvider>
     )
 }
 export default RoutesApp;

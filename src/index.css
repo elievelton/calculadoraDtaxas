@@ -13,7 +13,65 @@
     --secudaryColor:#2ecc71;
     --textColor: #ffffff;
 }
+/*Formularios de cadastro e login global*/
+input::placeholder, textarea::placeholder{
+    color :#5a3074;
+    
 
+}
+.btn{
+    background-color: #2ecc71;
+    color: var(--textColor);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    width:100%;
+    font-weight: bold;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 123px;
+}
+.btn.btn.dark{
+    background-color: #371c51;
+    border-radius: 0;
+}
+.btn.btn.ouline{
+    background-color: transparent;
+    border-radius: 0;
+    color: var(--mainColorlight);
+    border: 1px solid #371c51;
+    padding: 7px 30px;
+}
+.btn:hover{
+    background-color: green;
+    color: var(--textColor);
+}
+form{
+    max-width: 35%;
+    margin:0 auto;
+   
+}
+label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px;
+
+}
+label span{
+    margin-bottom: .3em;
+    font-weight: bold;
+    text-align: left;
+}
+input,textarea{
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #43036b;
+    padding: .8em 0;
+    background-color: transparent;
+}
 .home{
     height: 750px;
     width: 100%;
@@ -23,7 +81,14 @@
     background-color: #2ecc71;
 
 }
-
+.error{
+    background-color: darksalmon;
+    color: brown;
+    margin-bottom: 4px;
+    align-items: center;
+    text-align: center;
+    
+}
 
 
 header{
