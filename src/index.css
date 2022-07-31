@@ -92,16 +92,16 @@ input,textarea{
 }
 
 
-header{
+/* header{
     display: flex;
     align-items: center;
     justify-content:space-between;
     height: 60px;
     padding: 0 2rem;
     background-color: var(--mainColor);
-    color:var(--textColor)
-}
-nav a{
+    color:var(--textColor);
+} */
+/* nav a{
     
     margin: 0 2rem;
     color:var(--textColor);
@@ -112,8 +112,8 @@ nav a{
 nav a:hover{
     color:var(--secudaryColor);
 
-}
-.sair{
+} */
+/* .sair{
     background-color: #9db8e2;
     background-image: -webkit-linear-gradient(top, #eeeeee, #d1d1d1);
     background-image: -moz-linear-gradient(top, #eeeeee, #d1d1d1);
@@ -154,8 +154,8 @@ nav a:hover{
 }
 .sair:active {
     box-shadow: inset 0 0 0.5em #c9c9c9;
-}
-header .nav-btn{
+} */
+/* header .nav-btn{
     padding: 5px;
     cursor: pointer;
     background: transparent;
@@ -165,13 +165,10 @@ header .nav-btn{
     visibility: hidden;
     opacity: 0;
     font-size: 0.7rem;
-}
-.active {
-    
-    color: #2ecc71;
-}
+} */
 
-@media only screen and (max-width: 1024px) {
+
+/* @media only screen and (max-width: 1024px) {
     header .nav-btn{
         visibility: visible;
         opacity: 1;
@@ -208,4 +205,4 @@ header .nav-btn{
     nav a{
         font-size: 1.6rem;
     }
-}
+} */

@@ -20,7 +20,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 //importando so componentes da página;
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 // Fazendo as configurações das rotas do site
@@ -44,7 +44,7 @@ function RoutesApp(){
             <BrowserRouter>
         <div className="conteiner">
         <Header/>
-        <Navbar/>
+        {/* <Navbar/> */}
             <Routes>
                 <Route path='/' element = {<Home/>}/>
                 <Route path='/contato' element = {<Contato/>}/>

@@ -1,11 +1,83 @@
 .footer{
-    height: 150px;
     display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content:flex-end;
+    justify-content: space-between;
+    height: 200px;
     background-color: var(--mainColor);
+    color: var(--textColor); 
+    padding: 1rem 2rem;  
+}
+
+.sociaisContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sociaisContainer h3{
+    font-size: 1.5rem;
+}
+
+.center{
+    align-self: center;
+}
+
+.foot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.foot .sociais a{
+    text-decoration: none;
+    padding: 0 1rem;
     color: var(--textColor);
-    
-    
+    margin: 0 5px;
+    font-size: 2rem;
+}
+
+.foot .sociais{
+    display: flex;
+    list-style: none;
+
+}
+
+.foot .logo{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-family: monospace;
+    align-items: center;
+    gap: 1rem;
+}
+
+.foot .logo svg{
+    font-size: 3rem;
+}
+
+
+.foot .logo span{
+    color: var(--secudaryColor);
+}
+
+a.instagram:hover{
+    color: #C13584;
+    transition: 0.3s;
+}
+a.twitter:hover{
+    color: #1DA1F2;
+    transition: 0.3s;
+}
+a.facebook:hover{
+    color: #4267B2;
+    transition: 0.3s;
+}
+a.youtube:hover{
+    color: #FF0000;
+    transition: 0.3s;
 }

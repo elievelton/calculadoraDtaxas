@@ -1,52 +1,53 @@
 import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaOutdent,FaSignOutAlt} from "react-icons/fa";
 import {useRef} from "react";
 import React from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {useAuthentication } from '../../hooks/userAuthentucation'
 import {useAuthValue} from '../../context/AuthContext'
+import styles from './Navbar.module.css'
+// import style2 from '../Header/Header.module.css'
 
 
 function Navbar() {
     const navRef = useRef();
     const showNavbar = ()=>{
-        navRef.current.classList.toggle("responsive_nav");
+        navRef.current.classList.toggle(styles['responsive_nav']);
     }
 
     const {user} = useAuthValue();  
     const {logout} = useAuthentication();
     return(
         
-        <header>
-            <h3>Logo</h3>
-            <nav  ref= {navRef}>
-                <NavLink to="/"activeClassName="active"><FaHome size="1.8rem"/>Home</NavLink>
-                <NavLink to="/sobre"activeClassName="active"><FaOutdent/>Sobre</NavLink>
-                <NavLink to="/contato"activeClassName="active"><FaEnvelope/>Contato</NavLink>                
-                <NavLink to="/ofertas"activeClassName="active"><FaFire/>Ofertas</NavLink>
-                
+        <>
+            <nav  ref= {navRef} className={styles.nav}>
+                <NavLink to="/"><FaHome size="1.8rem"/><span>Home</span></NavLink>
+                <NavLink to="/sobre"><FaOutdent/><span>Sobre</span></NavLink>
+                <NavLink to="/contato"><FaEnvelope/><span>Contato</span></NavLink>                
+                <NavLink to="/ofertas"><FaFire className={styles.fire}/><span>Ofertas</span></NavLink>
                 {!user&&(
-                    <NavLink to="/login"activeClassName="active"><FaUserCircle/>Login/Cadastro</NavLink>
+                    <NavLink to="/login"><FaUserCircle/><span>Login/Cadastro</span></NavLink>
                 )}
                 {user&&(
-                    <NavLink to="/paineldecontrole"activeClassName="active"><FaSignOutAlt/>DashboardUser</NavLink>
+                    <NavLink to="/paineldecontrole"><FaSignOutAlt/>DashboardUser</NavLink>
                 )}
 
                 {user&&(
                     
-                        <button onClick={logout} className="sair">
+                        <button onClick={logout} className={styles.sair}>
                             Sair
                         </button>
                     
                 )}
                 
-                <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+                <button className={`${styles['nav-btn']} ${styles['nav-close-btn']}`} onClick={showNavbar}>
                     <FaTimes/>
                 </button>
+                
             </nav>
-            <button className="nav-btn" onClick={showNavbar}>
+            <button className={styles['nav-btn']} onClick={showNavbar}>
                 <FaBars/>
             </button>
-        </header>
+        </>
         
     );
 }

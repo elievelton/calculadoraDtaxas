@@ -1,0 +1,124 @@
+
+.nav a{
+    display: inline-block;
+    margin: 0 1rem;
+    color:var(--textColor);
+    text-decoration: none;
+    font-size: 1.5rem
+}
+
+.fire{
+    color: orange;
+}
+
+/* .nav a:nth-child(5){
+    margin-left: 5rem;
+} */
+
+.nav a svg{
+    vertical-align: -0.3rem;
+}
+
+.nav a span{
+    margin-left: .3rem;
+}
+
+header :global(.active),
+.outside:hover, 
+.nav a:hover{
+    color:var(--secudaryColor);
+
+}
+
+
+.nav-btn{
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--textColor);
+    display: none !important;
+    font-size: 0.7rem;
+}
+
+.sair{
+    background-color: #9db8e2;
+    background-image: -webkit-linear-gradient(top, #eeeeee, #d1d1d1);
+    background-image: -moz-linear-gradient(top, #eeeeee, #d1d1d1);
+    background-image: -o-linear-gradient(top, #eeeeee, #d1d1d1);
+    background-image: -ms-linear-gradient(top, #eeeeee, #d1d1d1);
+    background-image: linear-gradient(top, #eeeeee, #d1d1d1);
+
+    border: 1px solid #cccccc;
+    border-radius: 0.125em;
+    box-shadow: 0 0 0.125em #cccccc;
+
+    color: #444444;
+    font-family: "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 1em;
+    text-shadow: 1px 1px 0 #eeeeee;
+
+    cursor: pointer;
+
+    padding: 0.25em 0.5em;
+    margin: 0.25em 0;
+
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    -ms-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+}
+.sair:hover {
+    background-color: #eaeaea;
+    background-image: -webkit-linear-gradient(top, #eaeaea, #c9c9c9);
+    background-image: -moz-linear-gradient(top, #eaeaea, #c9c9c9);
+    background-image: -o-linear-gradient(top, #eaeaea, #c9c9c9);
+    background-image: -ms-linear-gradient(top, #eaeaea, #c9c9c9);
+    background-image: linear-gradient(top, #eaeaea, #c9c9c9);
+
+    border-color: #bbbbbb;
+    box-shadow: 0 0 0.125em #bbbbbb;
+}
+.sair:active {
+    box-shadow: inset 0 0 0.5em #c9c9c9;
+}
+
+@media only screen and (max-width: 1024px) {
+    .nav-btn{
+        display: block !important;  
+    }
+    header nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items:flex-start;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: var(--mainColor);
+        transition: 1s;
+        transform: translateY(-100vh);
+        flex-direction: column;
+    }
+    header .responsive_nav{
+        transform: none;
+
+    }
+    nav .nav-close-btn{
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+
+    }
+    nav .nav-close-btn:hover{
+        color:var(--secudaryColor);
+
+    }
+    nav a{
+        font-size: 1.6rem;
+    }
+}
