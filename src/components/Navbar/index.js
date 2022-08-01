@@ -39,13 +39,13 @@ function Navbar() {
                     
                 )}
                 
-                <button className={`${styles['nav-btn']} ${styles['nav-close-btn']}`} onClick={showNavbar}>
-                    <FaTimes/>
+                <button  className={`${styles['nav-btn']} ${styles['nav-close-btn']}`} onClick={showNavbar}>
+                    <FaTimes size="1.8rem"/>
                 </button>
                 
             </nav>
             <button className={styles['nav-btn']} onClick={showNavbar}>
-                <FaBars/>
+                <FaBars size="1.8rem"/>
             </button>
         </>
         

@@ -1,7 +1,10 @@
+import styles from '../Ofertas/ofertas.module.css';
+
 function Ofertas() {
     return(
-        <div>
-            <h1>Página de ofertas</h1>
+        <div className={styles.Ofertas}>
+            <h1>Principais ofertas de produtos</h1>
+            
         </div>
 
     );
