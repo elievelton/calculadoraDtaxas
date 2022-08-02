@@ -103,6 +103,7 @@ header :global(.active),
         transition: 1s;
         transform: translateY(-100vh);
         flex-direction: column;
+        z-index: 1000;
     }
     header .responsive_nav{
         transform: none;
