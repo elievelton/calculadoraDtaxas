@@ -3,7 +3,11 @@ import {FaInstagram, FaTwitter, FaFacebook, FaYoutube, FaCalculator} from "react
 
 function Footer() {
     return(
+        
         <footer className={styles.footer}>
+            <div className={styles.degrade}>
+
+            </div>
             <div className={styles.foot}>
                 <a className={styles.logo} href="/">
                     <FaCalculator/>
@@ -30,7 +34,12 @@ function Footer() {
                 </div>
             </div>
             <p id="copy" className={styles.center} >@Direitos reservados Calculadora de taxas &copy;2022</p>
+            <div className={styles.degrade2}>
+
+            </div>
+        
         </footer>
+        
 
     );
 }

@@ -57,6 +57,7 @@ function Home() {
         <div className="logo">
           <h2>Principais ofertas</h2>
         </div>
+        <center>
         <div className="carousel" ref={carousel}>
           {data.map((item) => {
             const { id, nome, price, oldPrice, image } = item;
@@ -78,6 +79,7 @@ function Home() {
             );
           })}
         </div>
+        </center>
         <div className="buttons">
           <button onClick={handleLeftClick}>
             <img src="/static/images/image-1.png" alt="Scroll Left" />

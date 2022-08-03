@@ -5,7 +5,9 @@
     height: 200px;
     background-color: var(--mainColor);
     color: var(--textColor); 
-    padding: 1rem 2rem;  
+    padding: 1rem 2rem; 
+    width: 100%; 
+    position: absolute;
 }
 
 .sociaisContainer{
@@ -21,6 +23,9 @@
 
 .center{
     align-self: center;
+    position: relative;
+    bottom: -37px;
+    z-index: 100;
 }
 
 .foot{
@@ -81,3 +86,25 @@ a.youtube:hover{
     color: #FF0000;
     transition: 0.3s;
 }
+.degrade{
+    position:inherit;    
+    
+    height: 20px;
+    background-color: #350862;
+    color: var(--textColor);
+    width: 100%;
+    margin-top: -20px;
+    right: 0;
+    
+}
+.degrade2{
+    background: #350862;
+    width: 100%;
+    height: 20px;
+    position:-ms-page;
+    bottom: -20px;
+    left: 0;
+    position: inherit;
+    
+}
+

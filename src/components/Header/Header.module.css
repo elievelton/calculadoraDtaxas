@@ -2,10 +2,11 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    height: 80px;
+    height: 60px;
     padding: .5rem 2rem;
     background-color: var(--mainColor);
     color:var(--textColor);
+    box-shadow: 1px 1px 1px  #2ecc71, -0.2em 0 0.3em #2ecc71;
 }
 
 .header .logo{
