@@ -121,6 +121,7 @@ header :global(.active)::after,
         transform: translateX(100vw);
         flex-direction: column;
         box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
     }
     header .responsive_nav{
         /* transform: none; */

@@ -1,0 +1,15 @@
+.Cadastro{
+    color: rgb(49, 45, 44);
+}
+.container{
+    display: flex;
+   flex-direction: column;
+   justify-content:right; 
+   position: relative;
+   max-width: 100%;
+   width: 90%;
+   margin: 0 auto 100px
+}
+.menu{
+    justify-content:right;
+}

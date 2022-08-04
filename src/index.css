@@ -301,10 +301,17 @@ nav a:hover{
     background-color: green;
     color: var(--textColor);
 }
+.carousel{
+    width: 80%;
+    align-items: center;
+
+}
 
 
 
 /*Card calculadoradtaxas*/
+
+
 
 
   
