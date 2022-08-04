@@ -4,7 +4,8 @@
     margin: 0 1rem;
     color:var(--textColor);
     text-decoration: none;
-    font-size: 1.5rem
+    font-size: 1.5rem;
+    position: relative;
 }
 
 .fire{
@@ -30,6 +31,22 @@ header :global(.active),
 
 }
 
+.nav a::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--secudaryColor);
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+
+    transition: width 0.2s;
+}
+
+header :global(.active)::after,
+.nav a:hover::after{
+    width: 100%;
+}
 
 .nav-btn{
     padding: 5px;
@@ -98,20 +115,22 @@ header :global(.active),
         display: flex;
         align-items:flex-start;
         justify-content: center;
-        gap: 1.5rem;
+        gap: 3rem;
         background-color: var(--mainColor);
         transition: 1s;
-        transform: translateY(-100vh);
+        transform: translateX(100vw);
         flex-direction: column;
+        box-shadow: -5px 0px 5px rgba(0, 0, 0, 0.3);
     }
     header .responsive_nav{
-        transform: none;
+        /* transform: none; */
+        transform: translateX(40vw);
 
     }
     nav .nav-close-btn{
         position: absolute;
         top: 2rem;
-        right: 2rem;
+        right: 45vw;
 
     }
     nav .nav-close-btn:hover{

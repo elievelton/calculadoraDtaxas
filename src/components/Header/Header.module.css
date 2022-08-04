@@ -33,3 +33,35 @@
     color: white;
 }
 
+.header a{
+    display: inline-block;
+    margin: 0 1rem;
+    color:var(--textColor);
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+header :global(.active),
+.header a:not(.logo):hover{
+    color:var(--secudaryColor);
+
+}
+
+
+.header a:not(.logo)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--secudaryColor);
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
+
+    transition: width 0.2s;
+}
+
+header :global(.active):not(.logo)::after,
+.header a:not(.logo):hover::after{
+    width: 100%;
+}
