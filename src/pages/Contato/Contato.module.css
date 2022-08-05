@@ -1,0 +1,17 @@
+.formu{
+   display: flexbox;
+   flex-direction: column;
+   font-family: Verdana,Tahoma,sans-serif;
+    font-size: 15px;
+    max-width: 500px;
+   
+}
+.container{
+   display: flexbox;
+   flex-direction: column;
+   justify-content:center; 
+   position: center;
+   max-width: 100%;
+   width: 90%;
+   margin: 0 auto 100px
+}
