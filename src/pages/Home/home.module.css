@@ -35,7 +35,7 @@
     margin-bottom: 1rem;
     text-align: center;
     box-shadow: 1px 1px 1px  #2ecc71, -0.2em 0 0.3em #2ecc71;
-    border-radius: 10px;
+    border-radius: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -47,6 +47,11 @@
       grid-template-areas: 
       "data"
       "result";
+    }
+    .data{
+      grid-area:data;
+      border-bottom: 1px solid rgba(0,0,0,.2);
+      border-right: none !important;
     }
   }
 
@@ -152,10 +157,14 @@
 
 
 
-  .data{
+ 
+    
+.data{
     grid-area: data;
     border-right: 1px solid rgba(0,0,0,.2);
-  }
+}
+  
+
   .data form{  
     display: flex;
     flex-direction: column;
