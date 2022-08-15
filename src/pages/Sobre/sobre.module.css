@@ -31,3 +31,15 @@
     align-self: end;
 }
 
+@media (max-width: 1024px){
+    .Sobre{
+       grid-template-columns: 1fr !important;
+       grid-template-areas: "info";
+    }
+    .info{
+        border: none;
+    }
+    .imagem{
+        display: none;
+    }
+ }
