@@ -2,16 +2,83 @@
    display: flexbox;
    flex-direction: column;
    font-family: Verdana,Tahoma,sans-serif;
-    font-size: 15px;
-    max-width: 500px;
-   
+   font-size: 1.5rem;
+   max-width: 100%;
+   min-height: 300px;
+   grid-area: formu;
+   border-left: 1px solid gray;
 }
-.container{
-   display: flexbox;
+.formu form{
+   display: flex;
    flex-direction: column;
+   max-width: 70%;
+   padding: 20px;
+   justify-items: center;
+   gap: 5px;
+   margin-top: 20px;
+}
+.formu form input,
+.formu form textarea{
+   font-size: 1.2rem;
+   padding: 15px;
+}
+
+.formu form textarea{
+   resize: vertical;
+}
+
+.container{
+   display: grid;
    justify-content:center; 
+   grid-template-columns: 1fr 1fr;
+   grid-template-areas: "design titulo" "design formu";
    position: center;
    max-width: 100%;
    width: 90%;
-   margin: 0 auto 100px
+   margin: 30px auto;
+}
+
+.titulo{
+   grid-area: titulo;
+}
+
+.titulo {
+   font-size: 1.5rem;
+   text-align: center;
+   border-width: 0 0 1px 1px;
+   border-style: none none solid solid;
+   border-color: gray;
+   padding: 40px 0;
+   color: var(--mainColor);
+   font-weight: normal;
+   position: relative;
+}
+
+.titulo p,
+.titulo h2{
+   font-family: monospace;
+}
+
+.titulo h2{
+   font-size: 2.5rem;
+}
+
+
+
+.design{
+   grid-area: design;
+}
+
+
+@media (max-width: 1024px){
+   .container{
+      grid-template-columns: 1fr;
+      grid-template-areas: "titulo" "formu";
+   }
+   .titulo{
+      border-style: none none solid none;
+   }
+   .formu{
+      border: none;
+   }
 }

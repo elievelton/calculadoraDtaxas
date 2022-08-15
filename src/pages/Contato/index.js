@@ -35,7 +35,11 @@ function Contato() {
 
   return (
     <div className={styles.container}>
-      <h2>Entre em Contato</h2>
+      <div className={styles.titulo}>
+        <h2>Contato</h2>
+        <p>Fale conosco</p>
+      </div>
+      <div className={styles.design}>a</div>
       <div className={styles.formu}>
         <form ref={form} className="form-control" onSubmit={sendEmail} >
           <input
