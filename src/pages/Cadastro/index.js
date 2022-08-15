@@ -1,6 +1,7 @@
 import styles from "../Cadastro/Cadastro.module.css";
 import React, { useState, useEffect } from "react";
 import { useAuthentication } from "../../hooks/userAuthentucation";
+import { Link } from "react-router-dom"
 
 function Cadastro() {
   const [displayName, setDisplayName] = useState("");
@@ -34,10 +35,11 @@ function Cadastro() {
   }, [authError]);
 
   return (
-    <div className={styles.Cadastro}>
+    <div className={`page ${styles.Cadastro}`}>
+      <div className={styles.imagem}>img</div>
       <div className={styles.container}>
-        <div className={styles.menu}>
-          <h1>Cadastre-se Agora</h1>
+          <h1>Cadastre-se</h1>
+          <p>Já possui login? <Link to='/login'>Faça login</Link></p>
           <form onSubmit={handleSubmit}>
             <label>
               <span>Nome:</span>
@@ -93,7 +95,6 @@ function Cadastro() {
             {error && <p className="error">{error}</p>}
           </form>
         </div>
-      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import styles from '../Login/login.module.css';
 import React, { useState, useEffect } from 'react';
 import { useAuthentication } from '../../hooks/userAuthentucation';
+import { Link } from "react-router-dom"
 
 function Login() {
     
@@ -29,24 +30,29 @@ function Login() {
     },[authError])
 
     return(
-        <div className={styles.Login}>
-            <h1>Faça seu Login</h1>
-            <form onSubmit={handleSubmit}>
-                
-                <label>
-                    <span>E-mail:</span>
-                    <input onChange={(e)=>setDisplayEmail(e.target.value)} value ={displayEmail}type='text' name='diplayEmail' placeholder='Digite seu E-mail' required/>
-                </label>
-                <label>
-                    <span>Senha:</span>
-                    <input onChange={(e)=>setSenhaUser(e.target.value)} value ={senhaUser} type='password' name ='senhaUser' placeholder='Ensira sua senha' required/>
-                </label>
-                
-                
-                {!loading && <button className='btn'>Login</button>}
-                {loading &&<button className='btn' disabled>aguarde...</button>}
-                {error &&<p className='error'>{error}</p>}
-            </form>
+        <div className={`page ${styles.Login}`}>
+            <div className={styles.imagem}>aa</div>
+            <div className={styles.formulario}>
+                <h1>Faça seu Login</h1>
+                <p>Não possui login? <Link to='/cadastro'>Cadastre-se</Link></p>
+                <form onSubmit={handleSubmit}>
+                    
+                    <label>
+                        <span>E-mail:</span>
+                        <input onChange={(e)=>setDisplayEmail(e.target.value)} value ={displayEmail}type='text' name='diplayEmail' placeholder='Digite seu E-mail' required/>
+                    </label>
+                    <label>
+                        <span>Senha:</span>
+                        <input onChange={(e)=>setSenhaUser(e.target.value)} value ={senhaUser} type='password' name ='senhaUser' placeholder='Ensira sua senha' required/>
+                    </label>
+                    
+                    
+                    {!loading && <button className='btn'>Login</button>}
+                    {loading &&<button className='btn' disabled>aguarde...</button>}
+                    {error &&<p className='error'>{error}</p>}
+                </form>
+
+            </div>
         </div>
 
     );

@@ -34,7 +34,7 @@ function Contato() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`page ${styles.contato}`}>
       <div className={styles.titulo}>
         <h2>Contato</h2>
         <p>Fale conosco</p>

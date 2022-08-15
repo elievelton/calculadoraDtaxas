@@ -307,7 +307,15 @@ nav a:hover{
 
 }
 
-
+.page{
+    display: grid;
+   justify-content:center; 
+   grid-template-columns: 1fr 1fr;
+   position: center;
+   max-width: 100%;
+   width: 90%;
+   margin: 30px auto;
+}
 
 /*Card calculadoradtaxas*/
 

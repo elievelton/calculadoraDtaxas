@@ -1,15 +1,57 @@
 .Cadastro{
     color: rgb(49, 45, 44);
+    grid-template-areas: "imagem cadastro";
 }
+
+.imagem{
+    grid-area: imagem;
+}
+
 .container{
+    grid-area: cadastro;
     display: flex;
-   flex-direction: column;
-   justify-content:right; 
-   position: relative;
-   max-width: 100%;
-   width: 90%;
-   margin: 0 auto 100px
+    flex-direction: column;
 }
-.menu{
-    justify-content:right;
+
+.container p{
+    margin-bottom: 40px;
+    font-size: 1.2rem;
 }
+.container h1{
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.container p,
+.container h1{
+    font-family: monospace;
+}
+
+.container form{
+    min-width: 100%;
+}
+
+.container input{
+    padding: 10px;
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+@media (max-width: 1024px){
+    .Cadastro{
+       grid-template-columns: 1fr !important;
+       grid-template-areas: "cadastro";
+    }
+    .container{
+        justify-self: center;
+        min-width: 90% !important;
+        text-align: center;
+    }
+    .container input,
+    .container form{
+        min-width: 100%;
+    }
+    .imagem{
+        display: none;
+    }
+ }
