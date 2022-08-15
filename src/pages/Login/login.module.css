@@ -36,6 +36,22 @@
     border-radius: 5px;
     margin-bottom: 15px;
 }
+.imagem{
+    grid-area: imagem;
+    animation: slideY 2s;
+}
+
+
+@keyframes slideY{
+    from {
+        transform: translateY(90px)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
+
 
 
 @media (max-width: 1024px){

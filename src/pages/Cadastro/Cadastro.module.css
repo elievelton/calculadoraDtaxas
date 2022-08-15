@@ -5,6 +5,7 @@
 
 .imagem{
     grid-area: imagem;
+    animation: slideX 2s;
 }
 
 .container{
@@ -36,6 +37,17 @@
     margin-bottom: 15px;
     max-width: 80%;
 }
+
+@keyframes slideX{
+    from {
+        transform: translateY(90px)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
+
 
 @media (max-width: 1024px){
     .Cadastro{

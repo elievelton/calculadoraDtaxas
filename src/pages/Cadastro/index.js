@@ -36,7 +36,9 @@ function Cadastro() {
 
   return (
     <div className={`page ${styles.Cadastro}`}>
-      <div className={styles.imagem}>img</div>
+      <div className={styles.imagem}>
+      <img src="/static/images/img_cadastro.png" alt="Login" ></img>
+      </div>
       <div className={styles.container}>
           <h1>Cadastre-se</h1>
           <p>Já possui login? <Link to='/login'>Faça login</Link></p>

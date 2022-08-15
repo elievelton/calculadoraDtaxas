@@ -30,6 +30,20 @@
     font-size: 1.2rem;
     align-self: end;
 }
+.imagem{
+    grid-area:auto;
+    animation: slideX 2s;
+}
+
+@keyframes slideX{
+    from {
+        transform: translateY(90px)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
 
 @media (max-width: 1024px){
     .Sobre{

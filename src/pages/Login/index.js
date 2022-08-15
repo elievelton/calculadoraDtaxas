@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuthentication } from '../../hooks/userAuthentucation';
 import { Link } from "react-router-dom"
 
+
 function Login() {
     
     const [displayEmail,setDisplayEmail] = useState("")
@@ -31,7 +32,9 @@ function Login() {
 
     return(
         <div className={`page ${styles.Login}`}>
-            <div className={styles.imagem}>aa</div>
+            <div className={styles.imagem}>
+                <img src="/static/images/img_login.png" alt="Login" ></img>
+            </div>
             <div className={styles.formulario}>
                 <h1>Faça seu Login</h1>
                 <p>Não possui login? <Link to='/cadastro'>Cadastre-se</Link></p>

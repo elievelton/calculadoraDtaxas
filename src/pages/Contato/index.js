@@ -39,7 +39,9 @@ function Contato() {
         <h2>Contato</h2>
         <p>Fale conosco</p>
       </div>
-      <div className={styles.design}>a</div>
+      <div className={styles.design}>
+      <img src="/static/images/img_contato.png" alt="Contato" ></img>
+      </div>
       <div className={styles.formu}>
         <form ref={form} className="form-control" onSubmit={sendEmail} >
           <input

@@ -60,8 +60,19 @@
 
 .design{
    grid-area: design;
+   animation: slideX 2s;
+
 }
 
+@keyframes slideX{
+    from {
+        transform: translateY(90px)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
 
 @media (max-width: 1024px){
    .contato{
