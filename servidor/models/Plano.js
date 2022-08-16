@@ -16,4 +16,8 @@ const Plano = db.sequelize.define('plano',{
 });
 
 Plano.sync();
+Plano.belongsTo(Recebimento,{
+    constraint : true,
+    foreiKey: 'idrecebimento',
+})
 module.exports = Plano;

@@ -13,6 +13,18 @@ const Empresa = db.sequelize.define('empresa',{
         allowNull: false,
         
 
+    },
+    notaReclameAqui:{
+        type: db.Sequelize.DECIMAL,
+        allowNull: false,
+        
+
+    },
+    melhoremque:{
+        type: db.Sequelize.STRING,
+        allowNull: false,
+        
+
     }
 });
 

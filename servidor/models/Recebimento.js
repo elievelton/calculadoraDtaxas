@@ -16,4 +16,8 @@ const Recebimento = db.sequelize.define('recebimento',{
 });
 
 Recebimento.sync();
+Recebimento.belongsTo(Taxas,{
+    constraint : true,
+    foreiKey: 'idtaxas',
+})
 module.exports = Recebimento;

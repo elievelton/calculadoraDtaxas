@@ -7,6 +7,12 @@ const Taxa = db.sequelize.define('taxa',{
         primaryKey: true,
 
     },
+    fatordetaxa:{
+        type: db.Sequelize.DECIMAL,
+        allowNull: false,
+        
+
+    },
     debito:{
         type: db.Sequelize.DECIMAL,
         allowNull: false,
