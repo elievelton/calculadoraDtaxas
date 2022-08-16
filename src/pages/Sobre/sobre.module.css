@@ -31,6 +31,10 @@
     align-self: end;
 }
 .imagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     grid-area:auto;
     animation: slideX 2s;
 }

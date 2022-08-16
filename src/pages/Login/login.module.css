@@ -37,6 +37,10 @@
     margin-bottom: 15px;
 }
 .imagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     grid-area: imagem;
     animation: slideY 2s;
 }
