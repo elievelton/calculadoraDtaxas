@@ -36,7 +36,7 @@
     align-items: center;
     justify-content: center;
     grid-area:auto;
-    animation: slideX 2s;
+    animation: slideX 0.5s;
 }
 
 @keyframes slideX{

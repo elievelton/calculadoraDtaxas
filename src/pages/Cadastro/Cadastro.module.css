@@ -1,6 +1,7 @@
 .Cadastro{
     color: rgb(49, 45, 44);
     grid-template-areas: "imagem cadastro";
+    
 }
 
 .imagem{
@@ -9,10 +10,11 @@
     align-items: center;
     justify-content: center;
     grid-area: imagem;
-    animation: slideX 2s;
+    animation: slideX 0.5s;
 }
 
 .container{
+    
     grid-area: cadastro;
     display: flex;
     flex-direction: column;
