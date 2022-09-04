@@ -21,7 +21,7 @@ export const useAuthentication = ()=>{
         }
     }
     //Registrar
-    const createUser =async(data) => {
+    const createUser = async(data) => {
         checkCancelled();
         setLoading(true);
         setError(null);
