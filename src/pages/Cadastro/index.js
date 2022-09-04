@@ -5,34 +5,40 @@ import { Link } from "react-router-dom"
 
 function Cadastro() {
   const [displayName, setDisplayName] = useState("");
-  const [displayEmail, setDisplayEmail] = useState("");
-  const [senhaUser, setSenhaUser] = useState("");
-  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
   const { createUser, error: authError, loading } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setError("");
 
     const user = {
       displayName,
-      displayEmail,
-      senhaUser,
+      email,
+      password,
     };
-    if (senhaUser !== confirmaSenha) {
-      setError("As senhas precisam ser iguais!");
+
+    if (password !== confirmPassword) {
+      setError("As senhas precisam ser iguais.");
       return;
     }
+
     const res = await createUser(user);
+
     console.log(res);
   };
+
   useEffect(() => {
     if (authError) {
       setError(authError);
     }
   }, [authError]);
+
 
   return (
     <div className={`page ${styles.Cadastro}`}>
@@ -57,8 +63,8 @@ function Cadastro() {
             <label>
               <span>E-mail:</span>
               <input
-                onChange={(e) => setDisplayEmail(e.target.value)}
-                value={displayEmail}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 type="text"
                 name="diplayEmail"
                 placeholder="Digite seu E-mail"
@@ -68,8 +74,8 @@ function Cadastro() {
             <label>
               <span>Senha:</span>
               <input
-                onChange={(e) => setSenhaUser(e.target.value)}
-                value={senhaUser}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 type="password"
                 name="senhaUser"
                 placeholder="Ensira sua senha"
@@ -79,8 +85,8 @@ function Cadastro() {
             <label>
               <span>Confirmação de Senha:</span>
               <input
-                onChange={(e) => setConfirmaSenha(e.target.value)}
-                value={confirmaSenha}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
                 type="password"
                 name="confirmaSenha"
                 placeholder="Confirme sua senha"
