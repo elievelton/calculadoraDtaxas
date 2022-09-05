@@ -1,0 +1,75 @@
+.header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    height: 60px;
+    padding: .5rem 2rem;
+    background-color: var(--mainColor);
+    color:var(--textColor);
+    box-shadow: 1px 1px 1px  #2ecc71, -0.2em 0 0.3em #2ecc71;
+    
+}
+
+.header .logo{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-family: monospace;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header .logo svg{
+    font-size: 3rem;
+}
+
+
+.header .logo span{
+    color: var(--secudaryColor);
+}
+
+.item{
+    color: white;
+}
+
+.header a{
+    display: inline-block;
+    margin: 0 1rem;
+    color:var(--textColor);
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+header :global(.active),
+.header a:not(.logo):hover{
+    color:var(--secudaryColor);
+
+}
+
+header .user svg{
+    font-size: 2rem;
+    align-self: center;
+}
+
+
+.header a:not(.logo)::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--secudaryColor);
+    position: absolute;
+    left: 0;
+    bottom: -.5rem;
+
+    transition: width 0.2s;
+}
+
+header :global(.active):not(.logo)::after,
+.header a:not(.logo):hover::after{
+    width: 100%;
+}

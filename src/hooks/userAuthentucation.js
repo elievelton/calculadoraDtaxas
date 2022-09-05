@@ -59,7 +59,8 @@ export const useAuthentication = ()=>{
 
   const logout = () => { 
       checkCancelled();
-      signOut(auth)
+      signOut(auth);
+      window.location.reload()
   }
 
   //login do usuario e verificações

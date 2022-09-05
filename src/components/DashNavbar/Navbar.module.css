@@ -1,0 +1,55 @@
+.nav{
+    display: flex;
+    flex-direction: column;
+    gap: 27rem;
+    background: #545454;
+    padding-top: 20px;
+}
+
+.nav .items{
+    display: grid;
+    gap: 20px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nav a{
+    display: inline-block;
+    margin: 0 1rem;
+    color:var(--textColor);
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: relative;
+}
+.nav svg{
+    margin-right: 20px;
+}
+
+.nav .delete{
+    display: flex;
+    align-items: center;
+}
+.nav .lixo{
+    font-size: 2.8rem;
+    border: 10px solid #ff8d8d;
+    border-radius: 50px;
+    color: white;
+    background-color: #ff8d8d;
+}
+
+.fire{
+    color: orange;
+}
+
+/* .nav a:nth-child(5){
+    margin-left: 5rem;
+} */
+
+.nav a svg{
+    vertical-align: -0.3rem;
+}
+
+.nav a span{
+    margin-left: .3rem;
+}
+

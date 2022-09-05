@@ -1,0 +1,17 @@
+.container{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-areas: 
+    "navbar content content";
+    height: 100%;
+    width: 100%;
+}
+
+.navbar{
+    grid-area: navbar;
+}
+
+.content{
+    grid-area: content;
+}

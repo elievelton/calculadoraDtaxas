@@ -7,6 +7,10 @@
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
 }
+html{
+    position: relative;
+    min-height: 100% !important;
+}
 
 :root{
     --mainColor:#43036b;
