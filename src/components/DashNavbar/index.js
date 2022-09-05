@@ -45,6 +45,7 @@ function DashNavbar({className, children}) {
                     <button onClick={logout} className={styles.sair}>
                         Sair
                     </button>
+                    
                 </div>
                 
             </nav>

@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter,Routes, Router,Route,Navigate} from 'react-router-dom';
+import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom';
 import { onAuthStateChanged } from "firebase/auth";
 
 // hoks
@@ -16,7 +16,7 @@ import Cadastro from "./pages/Cadastro";
 import DashboardUser from "./pages/DashboardUser";
 
 import { AuthProvider } from "./context/AuthContext";
-import { useLocation } from "react-router-dom";
+
 
 
 //importando so componentes da página;

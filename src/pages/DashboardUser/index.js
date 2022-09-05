@@ -1,10 +1,11 @@
 import DashNavbar from '../../components/DashNavbar'
 import styles from './Dashboard.module.css' 
 
-import { NavLink, Link, Route, Routes } from "react-router-dom";
-import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaUserAlt,FaOutdent,FaRegFileAlt,FaSignOutAlt} from "react-icons/fa";
+import { NavLink, Route, Routes } from "react-router-dom";
+import {FaUserAlt,FaRegFileAlt} from "react-icons/fa";
 import Perfil from '../Perfil';
 import Relatorio from '../Relatorio';
+
 
 function DashboardUser() {
     return(

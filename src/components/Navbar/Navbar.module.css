@@ -65,7 +65,7 @@ header :global(.active)::after,
     background-image: -moz-linear-gradient(top, #eeeeee, #d1d1d1);
     background-image: -o-linear-gradient(top, #eeeeee, #d1d1d1);
     background-image: -ms-linear-gradient(top, #eeeeee, #d1d1d1);
-    background-image: linear-gradient(top, #eeeeee, #d1d1d1);
+    background-image: linear-gradient(to top, #eeeeee, #d1d1d1);
 
     border: 1px solid #cccccc;
     border-radius: 0.125em;
@@ -93,7 +93,7 @@ header :global(.active)::after,
     background-image: -moz-linear-gradient(top, #eaeaea, #c9c9c9);
     background-image: -o-linear-gradient(top, #eaeaea, #c9c9c9);
     background-image: -ms-linear-gradient(top, #eaeaea, #c9c9c9);
-    background-image: linear-gradient(top, #eaeaea, #c9c9c9);
+    background-image: linear-gradient(to top, #eaeaea, #c9c9c9);
 
     border-color: #bbbbbb;
     box-shadow: 0 0 0.125em #bbbbbb;
