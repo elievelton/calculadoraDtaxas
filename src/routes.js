@@ -14,6 +14,8 @@ import Login from './pages/Login';
 import Sobre from "./pages/Sobre";
 import Cadastro from "./pages/Cadastro";
 import DashboardUser from "./pages/DashboardUser";
+import CadastrarEmpresa from "./pages/CadastrarEmpresa";
+import Admin from "./pages/Admin";
 
 import { AuthProvider } from "./context/AuthContext";
 
@@ -64,6 +66,8 @@ function RoutesApp(){
                 <Route path='/sobre' element = {<Sobre/>}/>
                 <Route path='/cadastro' element = {!user ?<Cadastro/> : <Navigate to ="/login"/>}/>
                 <Route path='/paineldecontrole/*' element = {user ?<DashboardUser/> : <Navigate to ="/login"/>}/>
+                <Route path='/admin/cadastrarempresa/' element = {<CadastrarEmpresa/>}/>
+                <Route path='/admin/' element = {<Admin/>}/>
 
 
                 
