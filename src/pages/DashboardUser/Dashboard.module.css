@@ -1,7 +1,7 @@
 .container{
     position: absolute;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 2fr 4fr 4fr;
     grid-template-areas: 
     "navbar content content";
     height: 100%;
@@ -14,4 +14,10 @@
 
 .content{
     grid-area: content;
+}
+
+.content h2{
+    font-size: 3rem;
+    font-weight: normal;
+    margin-bottom: 3rem;
 }

@@ -56,7 +56,7 @@ function RoutesApp(){
         <AuthProvider value ={{user}}>
             <BrowserRouter>
         <div className="conteiner">
-        {window.location.pathname === '/paineldecontrole' ? <DashHeader/> : <Header/>} 
+        {window.location.pathname.includes('/paineldecontrole') ? <DashHeader/> : <Header/>} 
         {/* <Navbar/> */}
             <Routes>
                 <Route path='/' element = {<Home/>}/>
@@ -72,7 +72,7 @@ function RoutesApp(){
 
                 
             </Routes>
-        {window.location.pathname !== '/paineldecontrole' && <Footer/>}
+        {!window.location.pathname.includes('/paineldecontrole') && <Footer/>}
 
             </div>
         

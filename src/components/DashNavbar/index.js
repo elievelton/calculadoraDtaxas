@@ -1,11 +1,12 @@
 import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaOutdent,FaSignOutAl,FaTrash} from "react-icons/fa";
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import React from 'react';
 import { NavLink, Link } from "react-router-dom";
 import {useAuthentication } from '../../hooks/userAuthentucation'
 import {useAuthValue} from '../../context/AuthContext'
 import styles from './Navbar.module.css'
 import { style } from "@mui/system";
+import { onAuthStateChanged } from "firebase/auth";
 // import style2 from '../Header/Header.module.css'
 
 
@@ -28,9 +29,17 @@ function DashNavbar({className, children}) {
     React.useEffect(() => {
         handleResize()
     },[])
-    
+    const {auth} = useAuthentication()
+    const [user, setUser] = useState(undefined)
 
-    const {user} = useAuthValue();  
+    useEffect(() =>{
+        onAuthStateChanged(auth,(user) =>{
+            setUser(user);
+        })
+    })
+    console.log(user)
+
+    // const {user} = useAuthValue();  
     const {logout} = useAuthentication();
     // console.log(resp)
     return(
