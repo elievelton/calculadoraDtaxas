@@ -259,6 +259,7 @@ function Home() {
         {/*testando a recuperação dos dados
           Aqui é para mostrar os nomes das empresas na tela home 
         */}
+        <h2>Exibindo testes de recuperação de dados</h2>
         {buscaempresas.map((buscaempresas) => (
           <h2>{buscaempresas.nome}</h2>
         ))}
