@@ -14,7 +14,7 @@ function CadastrarEmpresa() {
   const [idPlano, setidPlano] = useState(2);
   const [errorForm, setErrorForm] = useState("");
 
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { insertDocument, response } = useInsertDocument("empresas");
   const { user } = useAuthValue();
 
   //Função de enviar o formulario
@@ -25,7 +25,6 @@ function CadastrarEmpresa() {
       nome,
       notaReclameAqui,
       melhoremque,
-      idPlano,
       
     });
   };

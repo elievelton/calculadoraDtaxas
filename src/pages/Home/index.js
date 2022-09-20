@@ -9,10 +9,9 @@ import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
+import { fetchDocuments } from "../../hooks/useFetchDocuments";
 
 function Home() {
-  
-
   const [data, setData] = useState([]);
   const carousel = useRef(null);
   const [pessoa, setPessoa] = useState("cpf");
@@ -37,26 +36,29 @@ function Home() {
     "12x",
   ];
   //busca no banco de dados do firebase
-  const empresaCollectionRef = collection(db, "empresas");
-  const planoCollectionRef = collection(db, "planos");
-  const taxaCollectionRef = collection(db, "taxas");
-  useEffect(() => {
-    const getEmpresas= async () => {
-      const lista_empresas = await getDocs(empresaCollectionRef);
-      const lista_planos = await getDocs(planoCollectionRef);
-      const lista_taxas = await getDocs(taxaCollectionRef);
-      console.log(lista_empresas.docs.map((doc=>({...doc.data(), id: doc.id}))))
-      console.log(lista_planos.docs.map((doc=>({...doc.data(), id: doc.id}))))
-      console.log(lista_taxas.docs.map((doc=>({...doc.data(), id: doc.id}))))
-    };
-    getEmpresas();
-  }, []);
+  // const empresaCollectionRef = collection(db, "empresas");
+  // const planoCollectionRef = collection(db, "planos");
+  // const taxaCollectionRef = collection(db, "taxas");
+  // useEffect(() => {
+  //   const getEmpresas= async () => {
+  //     const lista_empresas = await getDocs(empresaCollectionRef);
+  //     const lista_planos = await getDocs(planoCollectionRef);
+  //     const lista_taxas = await getDocs(taxaCollectionRef);
+  //     console.log(lista_empresas.docs.map((doc=>({...doc.data(), id: doc.id}))))
+  //     console.log(lista_planos.docs.map((doc=>({...doc.data(), id: doc.id}))))
+  //     console.log(lista_taxas.docs.map((doc=>({...doc.data(), id: doc.id}))))
+  //   };
+  //   getEmpresas();
+  // }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/static/maquinas.json")
       .then((response) => response.json())
       .then(setData);
   }, []);
+
+  //buscando os dados do banco de dados atualizado Firebase
+  const { documents: buscaempresas } = fetchDocuments("empresas");
 
   const handleLeftClick = (e) => {
     e.preventDefault();
@@ -253,6 +255,16 @@ function Home() {
             <img src="/static/images/image-1.png" alt="Scroll Right" />
           </button>
         </div>
+
+        {/*testando a recuperação dos dados
+          Aqui é para mostrar os nomes das empresas na tela home 
+        */}
+        {buscaempresas.map((buscaempresas) => (
+          <h2>{buscaempresas.nome}</h2>
+        ))}
+
+
+
       </div>
     </>
   );
