@@ -1,17 +1,18 @@
 import styles from "./cadastrarempresa.module.css";
 import { useState } from "react";
-import { useNavegate } from "react-router-dom";
+
 import { useAuthValue } from "../../context/AuthContext";
-import { FormLabel } from "@mui/material";
+
 import { useInsertDocument } from "../../hooks/insertEmpresa";
-import userEvent from "@testing-library/user-event";
+
+
+
 
 function CadastrarEmpresa() {
   // Estados do cadastro de empresa
   const [nome, setNome] = useState("");
   const [notaReclameAqui, setNotaReclameAqui] = useState(1);
   const [melhoremque, setmelhoremque] = useState("");
-  const [idPlano, setidPlano] = useState(2);
   const [errorForm, setErrorForm] = useState("");
 
   const { insertDocument, response } = useInsertDocument("empresas");
@@ -21,12 +22,13 @@ function CadastrarEmpresa() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorForm("");
-    insertDocument({
+    let ids =''
+    ids = insertDocument({
       nome,
       notaReclameAqui,
       melhoremque,
-      
     });
+
   };
 
   return (
@@ -67,19 +69,15 @@ function CadastrarEmpresa() {
             value={melhoremque}
           />
         </label>
-        
-        {!response.loading && (
-            <button  className="btn">
-              Cadastrar
-            </button>
-          )}
-          {response.loading && (
-            <button className="btn" disabled>
-              aguarde...
-            </button>
-          )}
 
-          {response.error && <p className="error">{response.error}</p>}
+        {!response.loading && <button className="btn">Cadastrar</button>}
+        {response.loading && (
+          <button className="btn" disabled>
+            aguarde...
+          </button>
+        )}
+
+        {response.error && <p className="error">{response.error}</p>}
       </form>
     </div>
   );

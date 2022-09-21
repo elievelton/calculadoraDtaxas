@@ -13,6 +13,7 @@ import { fetchDocuments } from "../../hooks/useFetchDocuments";
 
 function Home() {
   const [data, setData] = useState([]);
+  const [dataPlanos, setDataPlanos] = useState([]);
   const carousel = useRef(null);
   const [pessoa, setPessoa] = useState("cpf");
   const [venda, setVenda] = useState("credito");
@@ -55,6 +56,12 @@ function Home() {
     fetch("http://localhost:3000/static/maquinas.json")
       .then((response) => response.json())
       .then(setData);
+  }, []);
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/static/planos.json")
+      .then((response) => response.json())
+      .then(setDataPlanos);
   }, []);
 
   //buscando os dados do banco de dados atualizado Firebase
@@ -262,6 +269,7 @@ function Home() {
         <h2>Exibindo testes de recuperação de dados</h2>
         {buscaempresas.map((buscaempresas) => (
           <h2>{buscaempresas.nome}</h2>
+        
         ))}
 
 

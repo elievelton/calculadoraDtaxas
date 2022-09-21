@@ -18,9 +18,6 @@ import CadastrarEmpresa from "./pages/CadastrarEmpresa";
 import Admin from "./pages/Admin";
 
 import { AuthProvider } from "./context/AuthContext";
-
-
-
 //importando so componentes da página;
 import Header from './components/Header';
 import DashHeader from './components/DashHeader';
@@ -68,6 +65,7 @@ function RoutesApp(){
                 <Route path='/paineldecontrole/*' element = {user ?<DashboardUser/> : <Navigate to ="/login"/>}/>
                 <Route path='/admin/cadastrarempresa/' element = {<CadastrarEmpresa/>}/>
                 <Route path='/admin/' element = {<Admin/>}/>
+                
 
 
                 
