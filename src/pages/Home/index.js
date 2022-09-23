@@ -2,14 +2,13 @@ import styles from "../Home/home.module.css";
 import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 // import Box from "@mui/material/Box";
-import { setAnalyticsCollectionEnabled } from "firebase/analytics";
+
 import AwesomeSlider from "react-awesome-slider";
 import { FaCheckCircle } from "react-icons/fa";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import { db } from "../../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
-import { fetchDocuments } from "../../hooks/useFetchDocuments";
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -17,7 +16,7 @@ function Home() {
   const carousel = useRef(null);
   const [pessoa, setPessoa] = useState("cpf");
   const [venda, setVenda] = useState("credito");
-  const [empresa, setEmpresa] = useState("escolha");
+  const [empresa, setEmpresa] = useState([]);
   const [parcela, setParcela] = useState("À vista");
   const [valor, setValor] = useState("");
   const planos = null;
@@ -36,36 +35,61 @@ function Home() {
     "11x",
     "12x",
   ];
-  //busca no banco de dados do firebase
-  // const empresaCollectionRef = collection(db, "empresas");
-  // const planoCollectionRef = collection(db, "planos");
-  // const taxaCollectionRef = collection(db, "taxas");
-  // useEffect(() => {
-  //   const getEmpresas= async () => {
-  //     const lista_empresas = await getDocs(empresaCollectionRef);
-  //     const lista_planos = await getDocs(planoCollectionRef);
-  //     const lista_taxas = await getDocs(taxaCollectionRef);
-  //     console.log(lista_empresas.docs.map((doc=>({...doc.data(), id: doc.id}))))
-  //     console.log(lista_planos.docs.map((doc=>({...doc.data(), id: doc.id}))))
-  //     console.log(lista_taxas.docs.map((doc=>({...doc.data(), id: doc.id}))))
-  //   };
-  //   getEmpresas();
-  // }, []);
+  // busca no banco de dados do firebase
+  const empresaCollectionRef = collection(db, "empresas");
+  const planoCollectionRef = collection(db, "planos");
+
+  useEffect(() => {
+    const getEmpresas = async () => {
+      const lista_empresas = await getDocs(empresaCollectionRef);
+      const lista_planos = await getDocs(planoCollectionRef);
+
+      setEmpresa(
+        lista_empresas.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+      setDataPlanos(
+        lista_planos.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
+    getEmpresas();
+  }, []);
+
+  //Filtragem dos dados planos
+  const nomeDoPlanos = dataPlanos.map((plano) => plano.nome);
+  const reference = dataPlanos.map((plano) => plano.reference);
+  const tipo = dataPlanos.map((plano) => plano.tipo);
+  const taxas1 = dataPlanos.map((plano) => plano.recebimento1);
+  const taxas2 = dataPlanos.map((plano) => plano.recebimento15);
+  const taxas3 = dataPlanos.map((plano) => plano.recebimento30);
+
+  //filtragem dos dados Empresa
+
+  const nomeDaEmpresa = empresa.map((empre) => empresa.nome);
+  const notaReclame = empresa.map((empre) => empresa.notaReclameAqui);
+  const melhorEm = empresa.map((empre) => empresa.melhorEmQue);
 
   useEffect(() => {
     fetch("http://localhost:3000/static/maquinas.json")
       .then((response) => response.json())
       .then(setData);
   }, []);
-  
-  useEffect(() => {
-    fetch("http://localhost:3000/static/planos.json")
-      .then((response) => response.json())
-      .then(setDataPlanos);
-  }, []);
 
-  //buscando os dados do banco de dados atualizado Firebase
-  const { documents: buscaempresas } = fetchDocuments("empresas");
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/static/planos.json")
+  //     .then((response) => response.json())
+  //     .then(setDataPlanos);
+  // }, []);
+
+  //Funções para deletar empresa e plano
+  async function deletePlano(id) {
+    const userDoc = doc(db, "planos", id);
+    await deleteDoc(userDoc);
+  }
+  async function deleteEmpresa(id) {
+    const userDoc = doc(db, "empresas", id);
+    await deleteDoc(userDoc);
+  }
+  //deleteEmpresa('ywAoTNmx6EDNC4MWRMew')
 
   const handleLeftClick = (e) => {
     e.preventDefault();
@@ -266,14 +290,19 @@ function Home() {
         {/*testando a recuperação dos dados
           Aqui é para mostrar os nomes das empresas na tela home 
         */}
-        <h2>Exibindo testes de recuperação de dados</h2>
-        {buscaempresas.map((buscaempresas) => (
-          <h2>{buscaempresas.nome}</h2>
-        
-        ))}
 
-
-
+        <ul>
+          {dataPlanos.map((plano) => {
+            return (
+              <div key={plano.id}>
+                <li>
+                  {plano.nome}
+                  {plano.recebimento1}
+                </li>
+              </div>
+            );
+          })}
+        </ul>
       </div>
     </>
   );
