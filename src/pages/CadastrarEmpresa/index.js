@@ -23,7 +23,7 @@ function CadastrarEmpresa() {
     e.preventDefault();
     setErrorForm("");
     let ids =''
-    ids = insertDocument({
+     insertDocument({
       nome,
       notaReclameAqui,
       melhoremque,
