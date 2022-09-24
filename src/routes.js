@@ -14,9 +14,7 @@ import Login from './pages/Login';
 import Sobre from "./pages/Sobre";
 import Cadastro from "./pages/Cadastro";
 import DashboardUser from "./pages/DashboardUser";
-import CadEmpresa from "./pages/CadEmpresa";
 import Admin from "./pages/Admin";
-import ListarEmpresas from "./pages/ListarEmpresas";
 import { AuthProvider } from "./context/AuthContext";
 //importando so componentes da página;
 import Header from './components/Header';
@@ -63,8 +61,7 @@ function RoutesApp(){
                 <Route path='/sobre' element = {<Sobre/>}/>
                 <Route path='/cadastro' element = {!user ?<Cadastro/> : <Navigate to ="/login"/>}/>
                 <Route path='/paineldecontrole/*' element = {user ?<DashboardUser/> : <Navigate to ="/login"/>}/>
-                <Route path='/paineldecontrole/cadastrarempresa/' element = {<CadEmpresa/>}/>
-                <Route path='/paineldecontrole/listarEmpresas/' element = {<ListarEmpresas/>}/>
+                
                 <Route path='/admin/' element = {<Admin/>}/>
                 
 
