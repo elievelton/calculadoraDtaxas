@@ -5,6 +5,8 @@ import { NavLink, Route, Routes, Navigate } from "react-router-dom";
 import {FaUserAlt,FaRegFileAlt} from "react-icons/fa";
 import Perfil from '../Perfil';
 import Relatorio from '../Relatorio';
+import CadEmpresa from '../CadEmpresa';
+import ListarEmpresas from '../ListarEmpresas';
 
 
 function DashboardUser() {
@@ -26,8 +28,11 @@ function DashboardUser() {
                 <Route path='/' element={<Navigate to ="/paineldecontrole/user"/>}/>
                 <Route path='/user' element={<Perfil className={styles.content}/>}/>
                 <Route path='/relatorio' element={<Relatorio/>}/>
-                <Route path='/cadastrarempresa' element={<Relatorio/>}/>
-                <Route path='/listar' element={<Relatorio/>}/>
+                <Route path='/cadastrarempresa' element={<CadEmpresa className={styles.content}/>}/>
+                <Route path='/listar' element={<ListarEmpresas className={styles.content}/>}/>
+                <Route path='/listar/edit' element={<CadEmpresa/>}/>
+                <Route path='/listar/planos' element={<Relatorio/>}/>
+                <Route path='/listar/cadastrarplano' element={<CadEmpresa/>}/>
             </Routes>
             
 

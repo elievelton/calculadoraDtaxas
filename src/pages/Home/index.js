@@ -70,7 +70,7 @@ function Home() {
 
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
-
+  const a= null;
   function setActivePessoa({ target }) {
     setPessoa(target.id);
   }

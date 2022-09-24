@@ -1,0 +1,44 @@
+
+.lista h2{
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.lista ul{
+    width: 80%;
+    list-style: none;
+    margin: 0 auto;
+}
+
+.lista li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    background: var(--mainColor);
+    color: white;
+    padding: 20px;
+    font-size: 1.40rem;
+    border-radius: 20px;
+}
+
+.lista li p{
+    font-weight: bold;
+}
+
+.lista li p::first-letter{
+    text-transform: capitalize;
+}
+
+
+
+.buttons a{
+    color: white;
+    text-decoration: none;
+    background: var(--secudaryColor);
+    padding: 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.20rem;
+    margin-left: 10px;
+}

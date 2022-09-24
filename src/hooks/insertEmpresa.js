@@ -42,7 +42,7 @@ export const useInsertDocument = (docCollection) => {
         collection(db, docCollection),
         newDocument
       );
-
+      console.log(insertedDocument)
       checkCancelBeforeDispatch({
         type: "INSERTED_DOC",
         payload: insertedDocument,
