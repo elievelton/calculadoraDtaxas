@@ -45,6 +45,16 @@ const ListarEmpresas = ({className}) => {
    const notaReclame = empresas.map((empre) => empresas.notaReclameAqui);
    const melhorEm = empresas.map((empre) => empresas.melhorEmQue);
  
+   //Funções para deletar empresa e plano precisa apenas do id
+  async function deletePlano(id) {
+    const userDoc = doc(db, "planos", id);
+    await deleteDoc(userDoc);
+  }
+  async function deleteEmpresa(id) {
+    const userDoc = doc(db, "empresas", id);
+    await deleteDoc(userDoc);
+  }
+  //deleteEmpresa('ywAoTNmx6EDNC4MWRMew')
 
   return (
     <div className={`${style.lista} ${className}`}>

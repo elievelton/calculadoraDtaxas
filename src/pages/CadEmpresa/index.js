@@ -27,7 +27,7 @@ const CadEmpresa = ({ className }) => {
   return (
     <div className={`${style.cadEmp} ${className}`}>
       <h2>Cadastrar empresa</h2>
-      <form onSubmit={handleSubmit}>
+      <form >
         <label htmlFor="nome">
           Nome da empresa:
           <input
@@ -69,9 +69,9 @@ const CadEmpresa = ({ className }) => {
           </select>
         </label>
       </form>
-      {!response.loading && <button className="btn">Cadastrar</button>}
+      {!response.loading && <button onClick={handleSubmit} className="btn">Cadastrar</button>}
       {response.loading && (
-        <button className="btn" disabled>
+        <button  className="btn" disabled>
           aguarde...
         </button>
       )}

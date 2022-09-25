@@ -2,6 +2,8 @@ import styles from "../Home/home.module.css";
 import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 // import Box from "@mui/material/Box";
+import React from "react";
+import Select from "react-select";
 
 import AwesomeSlider from "react-awesome-slider";
 import { FaCheckCircle } from "react-icons/fa";
@@ -19,8 +21,10 @@ function Home() {
   const [empresa, setEmpresa] = useState([]);
   const [parcela, setParcela] = useState("À vista");
   const [valor, setValor] = useState("");
+  const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
+  const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
   const planos = null;
-  const empresas = ["Ton", "Mercado Pago", "SumUp"];
+  // const empresas = ["Ton", "Mercado Pago", "SumUp"];
   const parcelas = [
     "À vista",
     "2x",
@@ -68,6 +72,18 @@ function Home() {
   const notaReclame = empresa.map((empre) => empresa.notaReclameAqui);
   const melhorEm = empresa.map((empre) => empresa.melhorEmQue);
 
+  const BuscaPlanoFiltro = () => {
+   const data = dataPlanos.filter((plano) =>
+      plano.reference.startsWith(selecionarEmpresa.toLowerCase())
+    );
+    setBuscaPlano(data);
+  };
+
+  useEffect(() => {
+    BuscaPlanoFiltro();
+  }, [selecionarEmpresa]);
+
+
   useEffect(() => {
     fetch("http://localhost:3000/static/maquinas.json")
       .then((response) => response.json())
@@ -80,17 +96,6 @@ function Home() {
   //     .then(setDataPlanos);
   // }, []);
 
-  //Funções para deletar empresa e plano
-  async function deletePlano(id) {
-    const userDoc = doc(db, "planos", id);
-    await deleteDoc(userDoc);
-  }
-  async function deleteEmpresa(id) {
-    const userDoc = doc(db, "empresas", id);
-    await deleteDoc(userDoc);
-  }
-  //deleteEmpresa('ywAoTNmx6EDNC4MWRMew')
-
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -101,7 +106,7 @@ function Home() {
 
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
-  const a= null;
+  const a = null;
   function setActivePessoa({ target }) {
     setPessoa(target.id);
   }
@@ -133,6 +138,22 @@ function Home() {
                 onSubmit={(event) => {
                   event.preventDefault();
                 }}>
+                
+                <h1>{console.log(buscaPlano)}</h1>
+                <label htmlFor="empresa">Escolha a empresa:</label>
+                <select
+                  value={selecionarEmpresa}
+                  onChange={({ target }) => {
+                    setSelecionarEmpresa(target.value);
+                  }}>
+                  <option value="escolha" disabled>
+                    Escolha a empresa
+                  </option>
+                  {empresa &&
+                    empresa.map((empre) => {
+                      return <option key={empre.id}>{empre.nome}</option>;
+                    })}
+                </select>
                 <div className={styles.opcoes}>
                   <button
                     className={pessoa === "cpf" ? styles.btnActive : ""}
@@ -147,30 +168,16 @@ function Home() {
                     Pessoa Jurídica
                   </button>
                 </div>
-                <label htmlFor="empresa">Escolha a empresa:</label>
-                <select
-                  value={empresa}
-                  onChange={({ target }) => {
-                    setEmpresa(target.value);
-                  }}>
-                  <option value="escolha" disabled>
-                    Escolha a empresa
-                  </option>
-                  {empresas &&
-                    empresas.map((empresa) => {
-                      return <option key={empresa}>{empresa}</option>;
-                    })}
-                </select>
                 <label>Escolha o plano:</label>
-                {planos &&
-                  planos.map((plano) => {
+                {buscaPlano &&
+                  buscaPlano?.map((plan) => {
                     return (
-                      <button key={plano} className={styles.planButton}>
-                        {plano}
+                      <button key={plan.id} className={styles.planButton}>
+                        {plan.nome}
                       </button>
                     );
                   })}
-                {!planos && (
+                {!buscaPlano && (
                   <button
                     className={`${styles.planButton} ${styles.buttonDisabled}`}>
                     Escolha a empresa
