@@ -23,7 +23,7 @@ function Home() {
   const [valor, setValor] = useState("");
   const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
   const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
-  const planos = null;
+  const [selectPlano ,setSelectPlano] = useState(""); // estado dos planos
   // const empresas = ["Ton", "Mercado Pago", "SumUp"];
   const parcelas = [
     "À vista",
@@ -71,6 +71,7 @@ function Home() {
   const nomeDaEmpresa = empresa.map((empre) => empresa.nome);
   const notaReclame = empresa.map((empre) => empresa.notaReclameAqui);
   const melhorEm = empresa.map((empre) => empresa.melhorEmQue);
+
 
   const BuscaPlanoFiltro = () => {
    const data = dataPlanos.filter((plano) =>
