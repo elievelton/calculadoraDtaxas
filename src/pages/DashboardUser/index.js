@@ -7,6 +7,10 @@ import Perfil from '../Perfil';
 import Relatorio from '../Relatorio';
 import CadEmpresa from '../CadEmpresa';
 import ListarEmpresas from '../ListarEmpresas';
+import ListarPlanos from '../ListarPlanos';
+import CadPlano from '../CadPlano';
+import EditPlano from '../EditPlano';
+import EditEmpresa from '../EditEmpresa';
 
 
 function DashboardUser() {
@@ -30,9 +34,10 @@ function DashboardUser() {
                 <Route path='/relatorio' element={<Relatorio/>}/>
                 <Route path='/cadastrarempresa' element={<CadEmpresa className={styles.content}/>}/>
                 <Route path='/listar' element={<ListarEmpresas className={styles.content}/>}/>
-                <Route path='/listar/edit' element={<CadEmpresa/>}/>
-                <Route path='/listar/planos' element={<Relatorio/>}/>
-                <Route path='/listar/cadastrarplano' element={<CadEmpresa/>}/>
+                <Route path='/listar/edit' element={<EditEmpresa className={styles.content}/>}/>
+                <Route path='/listar/planos' element={<ListarPlanos className={styles.content}/>}/>
+                <Route path='/listar/planos/edit' element={<EditPlano className={styles.content}/>}/>
+                <Route path='/listar/cadastrarplano' element={<CadPlano className={styles.content}/>}/>
             </Routes>
             
 
