@@ -23,7 +23,11 @@ function Home() {
   const [valor, setValor] = useState("");
   const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
   const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
-  const [selectPlano ,setSelectPlano] = useState(""); // estado dos planos
+
+  const [selectPlano, setSelectPlano] = useState(""); // estado dos plano selecionado
+
+  const [parcelamentodoPlano, setParcelamentodoPlano] = useState([]); // taxas do parcelamento
+
   // const empresas = ["Ton", "Mercado Pago", "SumUp"];
   const parcelas = [
     "À vista",
@@ -39,6 +43,7 @@ function Home() {
     "11x",
     "12x",
   ];
+
   // busca no banco de dados do firebase
   const empresaCollectionRef = collection(db, "empresas");
   const planoCollectionRef = collection(db, "planos");
@@ -72,18 +77,23 @@ function Home() {
   const notaReclame = empresa.map((empre) => empresa.notaReclameAqui);
   const melhorEm = empresa.map((empre) => empresa.melhorEmQue);
 
-
   const BuscaPlanoFiltro = () => {
-   const data = dataPlanos.filter((plano) =>
+    const data = dataPlanos.filter((plano) =>
       plano.reference.startsWith(selecionarEmpresa.toLowerCase())
     );
     setBuscaPlano(data);
   };
 
+  const setPlan = (e) => {
+    setSelectPlano(e.nome);
+    setParcelamentodoPlano([e.recebimento1,e.recebimento15,e.recebimento30]);
+
+    
+  }
+
   useEffect(() => {
     BuscaPlanoFiltro();
   }, [selecionarEmpresa]);
-
 
   useEffect(() => {
     fetch("http://localhost:3000/static/maquinas.json")
@@ -139,8 +149,7 @@ function Home() {
                 onSubmit={(event) => {
                   event.preventDefault();
                 }}>
-                
-                <h1>{console.log(buscaPlano)}</h1>
+                {/* <h1>{console.log(buscaPlano)}</h1> */}
                 <label htmlFor="empresa">Escolha a empresa:</label>
                 <select
                   value={selecionarEmpresa}
@@ -170,17 +179,33 @@ function Home() {
                   </button>
                 </div>
                 <label>Escolha o plano:</label>
-                {buscaPlano &&
-                  buscaPlano?.map((plan) => {
-                    return (
-                      <button key={plan.id} className={styles.planButton}>
+                <div className={styles.btPlano}>
+                  {buscaPlano &&
+                    buscaPlano?.map((plan) => {
+                      return (
+                        
+                        <button
+                        key={plan.id}
+                        value={selectPlano}
+                        onClick={() => setPlan(plan)}
+                        className={
+                          selectPlano === plan.nome
+                          ? styles.btnActive
+                          : ""
+                        }>
                         {plan.nome}
-                      </button>
-                    );
-                  })}
+                        </button>
+                          
+                          );
+                          
+                      })}
+                      <h1>{console.log(parcelamentodoPlano)}</h1>
+                      
+                </div>
+
                 {!buscaPlano && (
                   <button
-                    className={`${styles.planButton} ${styles.buttonDisabled}`}>
+                  className={`${styles.planButton} ${styles.buttonDisabled}`}>
                     Escolha a empresa
                   </button>
                 )}
@@ -299,18 +324,7 @@ function Home() {
           Aqui é para mostrar os nomes das empresas na tela home 
         */}
 
-        <ul>
-          {dataPlanos.map((plano) => {
-            return (
-              <div key={plano.id}>
-                <li>
-                  {plano.nome}
-                  {plano.recebimento1}
-                </li>
-              </div>
-            );
-          })}
-        </ul>
+        
       </div>
     </>
   );

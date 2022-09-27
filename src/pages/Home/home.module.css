@@ -196,7 +196,7 @@
     border-radius: 7px;
   }
   button{
-    padding: 5px 10px;
+    padding: 8px 10px;
     background: var(--secudaryColor);
     color: var(--textColor);
     font-weight: bold;
@@ -204,9 +204,14 @@
     border-radius: 10px;
     font-size: 1.2rem;
     cursor: pointer;
+    margin: 5px;
+    
   }
   .btnActive{
     background-color: var(--mainColor);
+    
+    
+    
   }
 
 
@@ -252,6 +257,13 @@
   justifyContent: 'space-between';
   width: 280px;
   height: 40px;
+}
+.btPlano{
+  
+  padding: 2px;
+  padding-left: 5px;
+  margin:-2px;
+  
 }
  
   
