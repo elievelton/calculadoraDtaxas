@@ -16,13 +16,17 @@ function Home() {
   const [data, setData] = useState([]);
   const [dataPlanos, setDataPlanos] = useState([]);
   const carousel = useRef(null);
-  const [pessoa, setPessoa] = useState("cpf");
-  const [venda, setVenda] = useState("credito");
+  const [pessoa, setPessoa] = useState(null);
+  const [venda, setVenda] = useState("");
   const [empresa, setEmpresa] = useState([]);
   const [parcela, setParcela] = useState("À vista");
-  const [valor, setValor] = useState("");
+  const [valor, setValor] = useState(null);
   const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
   const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
+  const [valorAtualizado, setValorAtualizado] = useState(null);
+  const [taxaAplicada, setTaxaAplicada] = useState(null); // taxa que foi aplicada
+  const [descontoAplicado, setDescontoAplicado] = useState(null); // desconto que foi aplicada
+  const [notaReclameAqui, setNotaReclameAqui] = useState(null); // Nota do reclame aqui
 
   const [selectPlano, setSelectPlano] = useState(""); // estado dos plano selecionado
 
@@ -63,19 +67,194 @@ function Home() {
     getEmpresas();
   }, []);
 
-  //Filtragem dos dados planos
-  const nomeDoPlanos = dataPlanos.map((plano) => plano.nome);
-  const reference = dataPlanos.map((plano) => plano.reference);
-  const tipo = dataPlanos.map((plano) => plano.tipo);
-  const taxas1 = dataPlanos.map((plano) => plano.recebimento1);
-  const taxas2 = dataPlanos.map((plano) => plano.recebimento15);
-  const taxas3 = dataPlanos.map((plano) => plano.recebimento30);
+  // função para calcular as taxas 
+  function calculandotaxas([venda, valor, parcela, parcelamentodoPlano]) {
+    let valo = null;
+    let val = null;
+    let taxaAtual = null;
+    let desconto = null;
+    let desc = null;
+    let calc = parcelamentodoPlano[0];
 
-  //filtragem dos dados Empresa
+    if (venda === "debito") {
+      valo = (100 * valor) / (100 - calc[0]);
+      val = valo.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+      taxaAtual = calc[0];
+      desc = valo - valor;
+      desconto = desc.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+    }
+    if (venda === "credito") {
+      if (parcela === "À vista") {
+        valo = (100 * valor) / (100 - calc[1]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[1];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "2x") {
+        valo = (100 * valor) / (100 - calc[2]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[2];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "3x") {
+        valo = (100 * valor) / (100 - calc[3]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[3];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "4x") {
+        valo = (100 * valor) / (100 - calc[4]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[4];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "5x") {
+        valo = (100 * valor) / (100 - calc[5]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[5];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "6x") {
+        valo = (100 * valor) / (100 - calc[6]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[6];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "7x") {
+        valo = (100 * valor) / (100 - calc[7]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[7];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "8x") {
+        valo = (100 * valor) / (100 - calc[8]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[8];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "9x") {
+        valo = (100 * valor) / (100 - calc[9]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[9];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "10x") {
+        valo = (100 * valor) / (100 - calc[10]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[10];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "11x") {
+        valo = (100 * valor) / (100 - calc[11]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[11];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      else if (parcela === "12x") {
+        valo = (100 * valor) / (100 - calc[12]);
+        val = valo.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+        taxaAtual = calc[12];
+        desc = valo - valor;
+        desconto = desc.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        });
+      }
+      
+      
+    }
+    setValorAtualizado(val);
+    setTaxaAplicada(taxaAtual);
+    setDescontoAplicado(desconto);
+  }
 
-  const nomeDaEmpresa = empresa.map((empre) => empresa.nome);
-  const notaReclame = empresa.map((empre) => empresa.notaReclameAqui);
-  const melhorEm = empresa.map((empre) => empresa.melhorEmQue);
+  
 
   const BuscaPlanoFiltro = () => {
     const data = dataPlanos.filter((plano) =>
@@ -86,10 +265,9 @@ function Home() {
 
   const setPlan = (e) => {
     setSelectPlano(e.nome);
-    setParcelamentodoPlano([e.recebimento1,e.recebimento15,e.recebimento30]);
-
-    
-  }
+    setParcelamentodoPlano([e.recebimento1, e.recebimento15, e.recebimento30]);
+    setPessoa(e.tipo);
+  };
 
   useEffect(() => {
     BuscaPlanoFiltro();
@@ -117,13 +295,17 @@ function Home() {
 
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
-  const a = null;
+
   function setActivePessoa({ target }) {
     setPessoa(target.id);
   }
   function setActiveVenda({ target }) {
     setVenda(target.id);
   }
+  //observador da função de calculo
+  useEffect(() => {
+    calculandotaxas([venda, valor, parcela, parcelamentodoPlano]);
+  }, [valor, parcela, parcelamentodoPlano]);
 
   if (!data || !data.length) return null;
 
@@ -164,52 +346,45 @@ function Home() {
                       return <option key={empre.id}>{empre.nome}</option>;
                     })}
                 </select>
-                <div className={styles.opcoes}>
-                  <button
-                    className={pessoa === "cpf" ? styles.btnActive : ""}
-                    id="cpf"
-                    onClick={setActivePessoa}>
-                    Pessoa Física
-                  </button>
-                  <button
-                    className={pessoa === "cnpj" ? styles.btnActive : ""}
-                    id="cnpj"
-                    onClick={setActivePessoa}>
-                    Pessoa Jurídica
-                  </button>
-                </div>
+
                 <label>Escolha o plano:</label>
-                <div className={styles.btPlano}>
+                <div>
                   {buscaPlano &&
                     buscaPlano?.map((plan) => {
                       return (
-                        
                         <button
-                        key={plan.id}
-                        value={selectPlano}
-                        onClick={() => setPlan(plan)}
-                        className={
-                          selectPlano === plan.nome
-                          ? styles.btnActive
-                          : ""
-                        }>
-                        {plan.nome}
+                          key={plan.id}
+                          value={selectPlano}
+                          onClick={() => setPlan(plan)}
+                          className={
+                            selectPlano === plan.nome ? styles.btnActive : ""
+                          }>
+                          {plan.nome}
                         </button>
-                          
-                          );
-                          
-                      })}
-                      <h1>{console.log(parcelamentodoPlano)}</h1>
-                      
+                      );
+                    })}
+                </div>
+                <label htmlFor="tipovenda">Plano Para:</label>
+                <div className={styles.opcoes}>
+                  <button
+                    className={pessoa === 0 ? styles.btnActive : ""}
+                    id="cpf">
+                    Pessoa Física
+                  </button>
+                  <button
+                    className={pessoa === 1 ? styles.btnActive : ""}
+                    id="cnpj">
+                    Pessoa Jurídica
+                  </button>
                 </div>
 
                 {!buscaPlano && (
                   <button
-                  className={`${styles.planButton} ${styles.buttonDisabled}`}>
+                    className={`${styles.planButton} ${styles.buttonDisabled}`}>
                     Escolha a empresa
                   </button>
                 )}
-                <label htmlFor="tipovenda">Tipo de venda:</label>
+                <label htmlFor="tipovenda">Escolha o tipo de venda:</label>
                 <div className={styles.opcoes}>
                   <button
                     className={venda === "credito" ? styles.btnActive : ""}
@@ -226,7 +401,7 @@ function Home() {
                 </div>
                 <label htmlFor="valor">Valor da venda:</label>
                 <input
-                  type="text"
+                  type="number"
                   name="valor"
                   id="valor"
                   placeholder="ex: R$ 4257,89"
@@ -235,6 +410,7 @@ function Home() {
                     setValor(target.value);
                   }}
                 />
+                <h1>{console.log(parcela)}</h1>
                 <label htmlFor="parcelamento">Parcelamento:</label>
                 <select
                   value={parcela}
@@ -255,18 +431,18 @@ function Home() {
               <div className={styles.recebe}>
                 <p>Você recebe:</p>
                 <h3>
-                  <span>R$ 4856,32</span>
+                  <span>{valorAtualizado}</span>
                 </h3>
               </div>
               <div className={styles.taxa}>
                 <p className={styles.titulo}>Taxa Aplicada:</p>
                 <p>
-                  <span>2,87%</span>
+                  <span>{taxaAplicada}%</span>
                 </p>
               </div>
               <div className={styles.desconto}>
                 <p className={styles.titulo}>Desconto Aplicado:</p>
-                <span>R$ 154,68</span>
+                <span>{descontoAplicado}</span>
               </div>
               <div className={styles.melhor}>
                 <p>
@@ -323,8 +499,6 @@ function Home() {
         {/*testando a recuperação dos dados
           Aqui é para mostrar os nomes das empresas na tela home 
         */}
-
-        
       </div>
     </>
   );
