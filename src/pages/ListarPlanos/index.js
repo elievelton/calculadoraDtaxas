@@ -8,8 +8,8 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState, useRef } from "react";
 import {FaTrash} from "react-icons/fa";
 
-const ListarEmpresas = ({className}) => {
-
+const ListarPlanos = ({className}) => {
+  const empresaRef = localStorage.getItem('empresa')
   const [dataPlanos, setDataPlanos] = useState([]);
   const [empresas, setEmpresas] = useState([]);
 
@@ -59,15 +59,13 @@ const ListarEmpresas = ({className}) => {
 
   return (
     <div className={`${style.lista} ${className}`}>
-      <h2>Empresas Cadastradas</h2>
+      <h2>Planos Cadastradas da <span>{empresaRef}</span></h2>
       <ul>
         {empresas.map(empresa => {
             return <li key={empresa.id} className={style.item}>
                 <p>{empresa.nome}</p> 
                 <div className={style.buttons}>
-                    <Link to={'/paineldecontrole/listar/edit'} onClick={(target)=>{localStorage.setItem('empresa',empresa.nome)}}>Editar</Link>
-                    <Link to={'/paineldecontrole/listar/planos'} onClick={(target)=>{localStorage.setItem('empresa',empresa.nome)}}>Ver Planos</Link>
-                    <Link to={'/paineldecontrole/listar/cadastrarplano'} onClick={(target)=>{localStorage.setItem('empresa',empresa.nome)}}>Adicionar Plano</Link>
+                    <Link to={'/paineldecontrole/listar/planos/edit'} onClick={(target)=>{localStorage.setItem('plano',empresa.nome)}}>Editar Plano</Link>
                     <button style={{backgroundColor: '#ff8d8d'}}><FaTrash/></button>
                 </div>
             </li>
@@ -77,4 +75,4 @@ const ListarEmpresas = ({className}) => {
   );
 };
 
-export default ListarEmpresas;
+export default ListarPlanos;

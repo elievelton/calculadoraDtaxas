@@ -4,6 +4,11 @@
     margin-bottom: 20px;
 }
 
+.lista h2 span{
+    color: var(--mainColor);
+    font-weight: bold;
+}
+
 .lista ul{
     width: 80%;
     list-style: none;
