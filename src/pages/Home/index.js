@@ -3,30 +3,31 @@ import { useEffect, useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 // import Box from "@mui/material/Box";
 import React from "react";
-import Select from "react-select";
+
 
 import AwesomeSlider from "react-awesome-slider";
 import { FaCheckCircle } from "react-icons/fa";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
 import { db } from "../../firebase/config";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 function Home() {
   const [data, setData] = useState([]);
   const [dataPlanos, setDataPlanos] = useState([]);
   const carousel = useRef(null);
-  const [pessoa, setPessoa] = useState(null);
+  const [pessoa, setPessoa] = useState(0);
   const [venda, setVenda] = useState("");
   const [empresa, setEmpresa] = useState([]);
   const [parcela, setParcela] = useState("À vista");
-  const [valor, setValor] = useState(null);
+  const [valor, setValor] = useState(0);
   const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
   const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
-  const [valorAtualizado, setValorAtualizado] = useState(null);
-  const [taxaAplicada, setTaxaAplicada] = useState(null); // taxa que foi aplicada
-  const [descontoAplicado, setDescontoAplicado] = useState(null); // desconto que foi aplicada
-  const [notaReclameAqui, setNotaReclameAqui] = useState(null); // Nota do reclame aqui
+  const [valorAtualizado, setValorAtualizado] = useState(0);
+  const [taxaAplicada, setTaxaAplicada] = useState(0); // taxa que foi aplicada
+  const [descontoAplicado, setDescontoAplicado] = useState(0); // desconto que foi aplicada
+  const [notaReclameAqui, setNotaReclameAqui] = useState(0); // Nota do reclame aqui
+  const [melhorEmQue, setMelhorEmQue] = useState("Sem Destaques")
 
   const [selectPlano, setSelectPlano] = useState(""); // estado dos plano selecionado
 
@@ -47,6 +48,7 @@ function Home() {
     "11x",
     "12x",
   ];
+  let nota = 0;
 
   // busca no banco de dados do firebase
   const empresaCollectionRef = collection(db, "empresas");
@@ -69,20 +71,40 @@ function Home() {
 
   // função para calcular as taxas 
   function calculandotaxas([venda, valor, parcela, parcelamentodoPlano]) {
-    let valo = null;
-    let val = null;
-    let taxaAtual = null;
-    let desconto = null;
-    let desc = null;
+    
+    let valo = 0;
+    valo = valo.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let val = 0;
+    val = val.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let taxaAtual = 0;
+    
+    let desconto = 0;
+    desconto =  desconto.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    let desc = 0;
+    desc =  desc.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
     let calc = parcelamentodoPlano[0];
 
     if (venda === "debito") {
-      valo = (100 * valor) / (100 - calc[0]);
+      valo = ((100 * valor) * (100 - calc[0]))/10000;
+      
       val = valo.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
       });
       taxaAtual = calc[0];
+      
       desc = valo - valor;
       desconto = desc.toLocaleString("pt-BR", {
         style: "currency",
@@ -91,7 +113,7 @@ function Home() {
     }
     if (venda === "credito") {
       if (parcela === "À vista") {
-        valo = (100 * valor) / (100 - calc[1]);
+        valo = ((100 * valor) * (100 - calc[1]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -104,7 +126,7 @@ function Home() {
         });
       }
       else if (parcela === "2x") {
-        valo = (100 * valor) / (100 - calc[2]);
+        valo = ((100 * valor) * (100 - calc[2]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -117,7 +139,7 @@ function Home() {
         });
       }
       else if (parcela === "3x") {
-        valo = (100 * valor) / (100 - calc[3]);
+        valo = ((100 * valor) * (100 - calc[3]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -130,7 +152,7 @@ function Home() {
         });
       }
       else if (parcela === "4x") {
-        valo = (100 * valor) / (100 - calc[4]);
+        valo = ((100 * valor) * (100 - calc[4]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -143,7 +165,7 @@ function Home() {
         });
       }
       else if (parcela === "5x") {
-        valo = (100 * valor) / (100 - calc[5]);
+        valo = ((100 * valor) * (100 - calc[5]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -156,7 +178,7 @@ function Home() {
         });
       }
       else if (parcela === "6x") {
-        valo = (100 * valor) / (100 - calc[6]);
+        valo = ((100 * valor) * (100 - calc[6]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -169,7 +191,7 @@ function Home() {
         });
       }
       else if (parcela === "7x") {
-        valo = (100 * valor) / (100 - calc[7]);
+        valo = ((100 * valor) * (100 - calc[7]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -182,7 +204,7 @@ function Home() {
         });
       }
       else if (parcela === "8x") {
-        valo = (100 * valor) / (100 - calc[8]);
+        valo = ((100 * valor) * (100 - calc[8]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -195,7 +217,7 @@ function Home() {
         });
       }
       else if (parcela === "9x") {
-        valo = (100 * valor) / (100 - calc[9]);
+        valo = ((100 * valor) * (100 - calc[9]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -208,7 +230,7 @@ function Home() {
         });
       }
       else if (parcela === "10x") {
-        valo = (100 * valor) / (100 - calc[10]);
+        valo = ((100 * valor) * (100 - calc[10]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -221,7 +243,7 @@ function Home() {
         });
       }
       else if (parcela === "11x") {
-        valo = (100 * valor) / (100 - calc[11]);
+        valo = ((100 * valor) * (100 - calc[11]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -234,7 +256,7 @@ function Home() {
         });
       }
       else if (parcela === "12x") {
-        valo = (100 * valor) / (100 - calc[12]);
+        valo = ((100 * valor) * (100 - calc[12]))/10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -255,12 +277,24 @@ function Home() {
   }
 
   
-
+//Algumas filtragens
   const BuscaPlanoFiltro = () => {
     const data = dataPlanos.filter((plano) =>
       plano.reference.startsWith(selecionarEmpresa.toLowerCase())
     );
     setBuscaPlano(data);
+  };
+  const buscaEmpresaFiltro = () => {
+    empresa.filter(person => person.nome ===selecionarEmpresa).map(filteredPerson => (
+      setNotaReclameAqui(filteredPerson.notaReclameAqui)
+    ))
+    
+  };
+  const buscaMelhorEmQue = () => {
+    empresa.filter(person => person.nome ===selecionarEmpresa).map(filteredPerson => (
+      setMelhorEmQue(filteredPerson.melhoremque)
+    ))
+    
   };
 
   const setPlan = (e) => {
@@ -271,6 +305,8 @@ function Home() {
 
   useEffect(() => {
     BuscaPlanoFiltro();
+    buscaEmpresaFiltro();
+    buscaMelhorEmQue();
   }, [selecionarEmpresa]);
 
   useEffect(() => {
@@ -279,11 +315,7 @@ function Home() {
       .then(setData);
   }, []);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/static/planos.json")
-  //     .then((response) => response.json())
-  //     .then(setDataPlanos);
-  // }, []);
+
 
   const handleLeftClick = (e) => {
     e.preventDefault();
@@ -296,21 +328,20 @@ function Home() {
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
 
-  function setActivePessoa({ target }) {
-    setPessoa(target.id);
-  }
+  
   function setActiveVenda({ target }) {
     setVenda(target.id);
   }
   //observador da função de calculo
   useEffect(() => {
     calculandotaxas([venda, valor, parcela, parcelamentodoPlano]);
-  }, [valor, parcela, parcelamentodoPlano]);
+  }, [venda,valor, parcela, parcelamentodoPlano]);
 
   if (!data || !data.length) return null;
 
   return (
     <>
+    
       <div className={styles.boxbanner}>
         <div className={styles.banner}>
           <AwesomeSlider className={styles.slider} animation="cubeAnimation">
@@ -331,14 +362,14 @@ function Home() {
                 onSubmit={(event) => {
                   event.preventDefault();
                 }}>
-                {/* <h1>{console.log(buscaPlano)}</h1> */}
+                
                 <label htmlFor="empresa">Escolha a empresa:</label>
                 <select
                   value={selecionarEmpresa}
                   onChange={({ target }) => {
                     setSelecionarEmpresa(target.value);
                   }}>
-                  <option value="escolha" disabled>
+                  <option value="escolha" active ="True">
                     Escolha a empresa
                   </option>
                   {empresa &&
@@ -352,6 +383,7 @@ function Home() {
                   {buscaPlano &&
                     buscaPlano?.map((plan) => {
                       return (
+                        
                         <button
                           key={plan.id}
                           value={selectPlano}
@@ -361,8 +393,10 @@ function Home() {
                           }>
                           {plan.nome}
                         </button>
+                        
                       );
                     })}
+                    
                 </div>
                 <label htmlFor="tipovenda">Plano Para:</label>
                 <div className={styles.opcoes}>
@@ -405,12 +439,12 @@ function Home() {
                   name="valor"
                   id="valor"
                   placeholder="ex: R$ 4257,89"
-                  value={valor}
+                  value = {valor}
                   onChange={({ target }) => {
                     setValor(target.value);
                   }}
                 />
-                <h1>{console.log(parcela)}</h1>
+                
                 <label htmlFor="parcelamento">Parcelamento:</label>
                 <select
                   value={parcela}
@@ -441,17 +475,17 @@ function Home() {
                 </p>
               </div>
               <div className={styles.desconto}>
-                <p className={styles.titulo}>Desconto Aplicado:</p>
+                <p className={styles.titulo}>Valor da Taxa:</p>
                 <span>{descontoAplicado}</span>
               </div>
               <div className={styles.melhor}>
                 <p>
                   <FaCheckCircle />
-                  Melhor taxa no crédito
+                  {melhorEmQue}
                 </p>
                 <p>
                   <FaCheckCircle />
-                  Nota 9.4 no reclame aqui
+                  Nota {notaReclameAqui} no reclame aqui
                 </p>
               </div>
               <button className={styles.comprar}>Peça já a sua</button>
