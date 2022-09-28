@@ -1,11 +1,11 @@
-import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaOutdent,FaSignOutAl,FaTrash} from "react-icons/fa";
+import {FaTrash} from "react-icons/fa";
 import {useEffect, useRef, useState} from "react";
 import React from 'react';
-import { NavLink, Link } from "react-router-dom";
+
 import {useAuthentication } from '../../hooks/userAuthentucation'
-import {useAuthValue} from '../../context/AuthContext'
+
 import styles from './Navbar.module.css'
-import { style } from "@mui/system";
+
 import { onAuthStateChanged } from "firebase/auth";
 // import style2 from '../Header/Header.module.css'
 

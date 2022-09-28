@@ -38,7 +38,7 @@ function RoutesApp(){
     React.useEffect(() => {
         setIsDash(window.location.pathname)
         // console.log(window.location.pathname)
-        console.log(isDash)
+        
     },[isDash])
 
     if(loadingUser) {

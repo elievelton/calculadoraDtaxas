@@ -41,7 +41,7 @@
     grid-template-areas: 
       "data result";
   }
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     .boxcalculadora{
       grid-template-columns: 1fr;
       grid-template-areas: 
@@ -74,13 +74,13 @@
     align-self: center;
     justify-self: center;
     padding: 10px;
-    border-radius: 60px;
+    border-radius: 20px;
     display: grid;
-    min-width: 80%;
+    min-width: 100%;
   }
   .recebe p{
     justify-self: start;
-    color: #ffdb00;
+    color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
     margin-left: 10px;
@@ -94,11 +94,12 @@
   .recebe span::after{
     content: '';
     width: 100%;
-    height: 2px;
-    background: #ffdb00;
+    height: 1px;
+    background: #000;
     position: absolute;
-    left: 0;
+    left: 0px;
     bottom: .1rem;
+    
   }
 
   .taxa{
@@ -125,6 +126,7 @@
   .desconto span{
     color: #ef4136;
     background: #fdebe9;
+    boder-radius: 5px;
   }
 
   .melhor{
@@ -266,10 +268,14 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    border: none;
 }
 input[type=number]{
   -moz-appearance: textfield;
 }
+
+
+
 
 
  

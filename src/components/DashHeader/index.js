@@ -1,9 +1,9 @@
-import Navbar from '../Navbar/index'
+
 import style from './Header.module.css'
-import {FaBars, FaTimes, FaHome,FaEnvelope,FaFire,FaUserCircle,FaOutdent,FaSignOutAlt, FaCalculator} from "react-icons/fa";
-import {useRef} from "react";
+import {FaUserCircle, FaCalculator} from "react-icons/fa";
+
 import React from 'react';
-import { NavLink } from "react-router-dom";
+
 import {useAuthentication } from '../../hooks/userAuthentucation'
 import {useAuthValue} from '../../context/AuthContext'
 

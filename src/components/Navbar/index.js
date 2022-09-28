@@ -67,7 +67,7 @@ function Navbar() {
                     <NavLink to="/login"><FaUserCircle/><span>Login/Cadastro</span></NavLink>
             )}
             {user&& !resp &&(
-                <a href="/paineldecontrole"><FaSignOutAlt/>DashboardUser</a>
+                <a href="/paineldecontrole"><FaSignOutAlt/>Dashboard</a>
             )}
 
             {user&& !resp &&(

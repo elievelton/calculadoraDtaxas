@@ -20,7 +20,7 @@ function Home() {
   const [venda, setVenda] = useState("");
   const [empresa, setEmpresa] = useState([]);
   const [parcela, setParcela] = useState("À vista");
-  const [valor, setValor] = useState(0);
+  const [valor, setValor] = useState(null);
   const [selecionarEmpresa, setSelecionarEmpresa] = useState("");
   const [buscaPlano, setBuscaPlano] = useState([]); // buscar planos
   const [valorAtualizado, setValorAtualizado] = useState(0);
@@ -94,7 +94,10 @@ function Home() {
       style: "currency",
       currency: "BRL",
     });
+    //falta terminar o recebimento de 15 e 30 dias
     let calc = parcelamentodoPlano[0];
+    let calc1 = parcelamentodoPlano[1];
+    let calc2 = parcelamentodoPlano[2];
 
     if (venda === "debito") {
       valo = ((100 * valor) * (100 - calc[0]))/10000;
@@ -433,12 +436,16 @@ function Home() {
                     Débito
                   </button>
                 </div>
-                <label htmlFor="valor">Valor da venda:</label>
+                
+                <label className = {styles.labelValor}htmlFor="valor">Valor da venda:</label>
+                
                 <input
+                  className={styles.inputcifrao}
                   type="number"
                   name="valor"
                   id="valor"
                   placeholder="ex: R$ 4257,89"
+                  
                   value = {valor}
                   onChange={({ target }) => {
                     setValor(target.value);
