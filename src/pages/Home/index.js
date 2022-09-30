@@ -28,7 +28,8 @@ function Home() {
   const [descontoAplicado, setDescontoAplicado] = useState(0); // desconto que foi aplicada
   const [notaReclameAqui, setNotaReclameAqui] = useState(0); // Nota do reclame aqui
   const [melhorEmQue, setMelhorEmQue] = useState("Sem Destaques")
-
+  const [bannerUrl, setBannerUrl] = useState("https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg"); // url da máquinas de cartões
+  const[link, setLink] = useState("#");
   const [selectPlano, setSelectPlano] = useState(""); // estado dos plano selecionado
 
   const [parcelamentodoPlano, setParcelamentodoPlano] = useState([]); // taxas do parcelamento
@@ -289,7 +290,9 @@ function Home() {
   };
   const buscaEmpresaFiltro = () => {
     empresa.filter(person => person.nome ===selecionarEmpresa).map(filteredPerson => (
-      setNotaReclameAqui(filteredPerson.notaReclameAqui)
+      setNotaReclameAqui(filteredPerson.notaReclameAqui),
+      setBannerUrl(filteredPerson.bannerUrl),
+      setLink(filteredPerson.link)
     ))
     
   };
@@ -338,7 +341,7 @@ function Home() {
   //observador da função de calculo
   useEffect(() => {
     calculandotaxas([venda, valor, parcela, parcelamentodoPlano]);
-  }, [venda,valor, parcela, parcelamentodoPlano]);
+  }, [venda,link,bannerUrl,valor, parcela, parcelamentodoPlano]);
 
   if (!data || !data.length) return null;
 
@@ -494,10 +497,22 @@ function Home() {
                   <FaCheckCircle />
                   Nota {notaReclameAqui} no reclame aqui
                 </p>
+          <div className={styles.container}>
+            <div className={styles.containerImg}>
+                <img className = {styles.imgmaquininha} src ={bannerUrl} ></img>
+                </div>
+                <div>
+              <div className={styles.posicaobnt} >
+              <a href={link} target="_blank">
+              <button className={styles.btn}>Adquirir Máquina</button>
+              </a>
               </div>
-              <button className={styles.comprar}>Peça já a sua</button>
+              </div>
+              </div>
             </div>
           </div>
+              </div>
+              
         </div>
       </div>
 

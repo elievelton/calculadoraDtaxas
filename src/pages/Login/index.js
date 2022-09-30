@@ -57,14 +57,15 @@ function Login() {
               value={password}
               type="password"
               name="senhaUser"
+              
               placeholder="Ensira sua senha"
               required
             />
           </label>
 
-          {!loading && <button className="btn">Login</button>}
+          {!loading && <button className={styles.botao}>Login</button>}
           {loading && (
-            <button className="btn" disabled>
+            <button className={styles.botao} disabled>
               aguarde...
             </button>
           )}

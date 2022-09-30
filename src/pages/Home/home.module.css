@@ -14,15 +14,21 @@
     justify-content: center;
     align-items: center;
     margin-left: 10px;
+
   }
   .calculadora{
     width: 100%;
-    background-color: #e1e1e1;
+    background-color: #FAFAFA;
     display: flex;
     justify-content: center;
     align-items: center;
     border: #1e1e1e;
     border-radius: 1px;
+
+
+
+
+
   }
   .boxcalculadora{
     max-width: 80%;
@@ -34,13 +40,29 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: center;
-    box-shadow: 1px 1px 1px  #2ecc71, -0.2em 0 0.3em #2ecc71;
+    box-shadow: 2px 2px 2px  #8258FA, -0.2em 0 0.3em #8258FA;
     border-radius: 30px;
     display: grid;
+    animation: slideY 1.0s;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
+    
       "data result";
   }
+  .boxcalculadora:hover{
+    box-shadow: 3px 3px 3px  var(--mainColor), -0.2em 0 1.3em var(--mainColor);
+
+  }
+
+  @keyframes slideY{
+    from {
+        transform: translateY(190px)
+    }
+
+    to {
+        transform: translateY(0px)
+    }
+}
   @media (max-width: 1200px) {
     .boxcalculadora{
       grid-template-columns: 1fr;
@@ -146,15 +168,88 @@
   }
 
 
-  .comprar{
+  .btn{
     grid-area: comprar;
-    background: #ff914d;
-    padding: 0px;
+    background: #3498db;
+    padding: 1px;
     border-radius: 50px;
-    max-width: 100%;
-    max-height: 50px;
+    width: 220px;
+    height: 50px;
+    cursor: pointer;
+    position: relative;
+    margin-top: 80px;
+    border-color: #3498db;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+    
   }
 
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
 
 
 
@@ -227,6 +322,7 @@
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
+    
   }
   .boxbanner{
     width: 100%;
@@ -273,6 +369,56 @@ input::-webkit-inner-spin-button {
 input[type=number]{
   -moz-appearance: textfield;
 }
+
+.container{
+  display: flex;
+  padding: 5px;
+  width: 100%;
+  alignItems: center;
+  color: #000 !important;
+  margin-top: 15px;
+  position: relative;
+  
+}
+.containerImg{
+ height: 120px;
+  width: 120px;
+  padding-top: 10px;
+  
+  
+}
+.imgmaquininha{
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 20px;
+  animation:moveInImg 1.0s;
+  transition: transform 1s;
+  transform: translateX(0) scale(0.9);
+
+}
+.imgmaquininha:hover{
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(1px) scale(1.0);
+}
+.posicaobnt{
+  width: 100%;
+  position: relative;
+  align-items: center;
+  right: -20px;
+}
+@keyframes moveInImg {
+  from {
+    transform: translateX(100px)
+}
+
+to {
+    transform: translateX(0px)
+}
+}
+
+
 
 
 
