@@ -75,6 +75,7 @@ const ListarPlanos = ({className}) => {
                     <Link to={'/paineldecontrole/listar/planos/edit'} onClick={({target})=>{localStorage.setItem('plano',plan.nome)}}>Editar Plano</Link>
                     <button onClick={()=>{
                       deletePlano(plan.id)
+                      window.location.reload(true);
                     }} style={{backgroundColor: '#ff8d8d'}}><FaTrash/></button>
                 </div>
             </li>
