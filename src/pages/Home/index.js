@@ -407,12 +407,12 @@ function Home() {
                 <label htmlFor="tipovenda">Plano Para:</label>
                 <div className={styles.opcoes}>
                   <button
-                    className={pessoa === 0 ? styles.btnActive : ""}
+                    className={pessoa == 0 ? styles.btnActive : ""}
                     id="cpf">
                     Pessoa Física
                   </button>
                   <button
-                    className={pessoa === 1 ? styles.btnActive : ""}
+                    className={pessoa == 1 ? styles.btnActive : ""}
                     id="cnpj">
                     Pessoa Jurídica
                   </button>

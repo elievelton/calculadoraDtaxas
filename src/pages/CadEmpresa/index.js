@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const CadEmpresa = ({ className }) => {
   const [nome, setNome] = React.useState("");
-  const [notaReclameAqui, setNotaReclameAqui] = React.useState("");
+  const [notaReclameAqui, setNotaReclameAqui] = React.useState();
   const [melhoremque, setmelhoremque] = React.useState("");
   const [bannerUrl, setBannerUrl] = React.useState("");
   const [link, setLink] = React.useState("");
@@ -40,6 +40,7 @@ const CadEmpresa = ({ className }) => {
       link,
     });
     notify();
+    
   };
 
   return (

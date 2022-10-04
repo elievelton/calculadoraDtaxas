@@ -1,33 +1,94 @@
 import React from "react";
 import style from "./EditEmpresa.module.css";
-import { useInsertDocument } from "../../hooks/insertEmpresa";
+import { useUpdateDocument } from "../../hooks/updateDocument";
 import { useAuthValue } from "../../context/AuthContext";
+import { useEffect, useState, useRef } from "react";
+import { db } from "../../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 const EditEmpresa = ({ className }) => {
-  const [nome, setNome] = React.useState("");
-  const [notaReclameAqui, setNotaReclameAqui] = React.useState("");
-  const [melhoremque, setmelhoremque] = React.useState();
-  const [errorForm, setErrorForm] = React.useState("");
+  
+  const refEmpre = localStorage.getItem("empresa");
+  
+  const [nome, setNome] = useState("");
+  const [notaReclameAqui, setNotaReclameAqui] = useState();
+  const [melhoremque, setmelhoremque] = useState("");
+  const [bannerUrl, setBannerUrl] = useState("");
+  const [link, setLink] = useState("");
+  const [id, setId] = useState();
+  const [errorForm, setErrorForm] = useState("");
   const { user } = useAuthValue();
+  const [buscaEmpre, setBuscaEmpre] = useState([]);
+  const [campo, setCampo] = useState(false);
 
-  const { insertDocument, response } = useInsertDocument("empresas");
+  const { updateDocument, response } = useUpdateDocument("empresas");
+
+  const [dataPlanos, setDataPlanos] = useState([]);
+  const [empresas, setEmpresas] = useState([]);
+
+  // busca no banco de dados do firebase
+  const empresaCollectionRef = collection(db, "empresas");
+  const planoCollectionRef = collection(db, "planos");
+
+  useEffect(() => {
+    const getEmpresas = async () => {
+      const lista_empresas = await getDocs(empresaCollectionRef);
+      const lista_planos = await getDocs(planoCollectionRef);
+
+      setEmpresas(
+        lista_empresas.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+      setDataPlanos(
+        lista_planos.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
+    getEmpresas();
+    setCampo(!campo)
+    
+  }, []);
+
+
+ 
+
+  //função busca e seta as informações do BD
+  const buscaEmpresaFiltro = () => {
+    empresas.filter(person => person.nome === refEmpre).map(filteredPerson => (
+      setNotaReclameAqui(filteredPerson.notaReclameAqui),
+      setBannerUrl(filteredPerson.bannerUrl),
+      setLink(filteredPerson.link),
+      setNome(filteredPerson.nome),
+      setmelhoremque(filteredPerson.melhoremque),
+      setId(filteredPerson.id)
+
+    ))
+    
+    
+  };
+  
+  useEffect(() => {
+  
+    buscaEmpresaFiltro()
+    
+   }, [empresas]);
 
   //Função de enviar o formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorForm("");
-    let ids = "";
-    insertDocument({
+    const data = {
       nome,
       notaReclameAqui,
       melhoremque,
-    });
+      bannerUrl,
+      link,
+    }
+    updateDocument(id,data);
   };
 
   return (
     <div className={`${style.cadEmp} ${className}`}>
-      <h2>Editar empresa</h2>
-      <form >
+      <h2>Editar empresa {refEmpre}</h2>
+      <form>
         <label htmlFor="nome">
           Nome da empresa:
           <input
@@ -38,10 +99,32 @@ const EditEmpresa = ({ className }) => {
             onChange={(e) => setNome(e.target.value)}
           />
         </label>
+        <label htmlFor="url">
+          Url da imagem:
+          <input
+            type="text"
+            name="url"
+            placeholder="(Link da imagem da máquina de cartão)"
+            id=""
+            value={bannerUrl}
+            onChange={(e) => setBannerUrl(e.target.value)}
+          />
+        </label>
+        <label htmlFor="link">
+          Link do site:
+          <input
+            type="text"
+            name="link"
+            placeholder="(Link do site)"
+            id=""
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+          />
+        </label>
         <label htmlFor="destak">
           Destaque em que?
           <input
-            type="number"
+            type="text"
             name="destak"
             id=""
             placeholder="(deixar em branco se não houver)"
@@ -51,23 +134,21 @@ const EditEmpresa = ({ className }) => {
         </label>
         <label htmlFor="nota">
           Nota do reclame aqui:
-          <select
-            name="nota"
-            id="nota"
-            value={notaReclameAqui}
-            onChange={(e) => setNotaReclameAqui(e.target.value)}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
+          <input
+                  
+                  type="number"
+                  name="nota"
+                  id="nota"
+                  placeholder="ex: 9.4"
+                  
+                  value = {notaReclameAqui}
+                  onChange={(e) => {
+                    setNotaReclameAqui(e.target.value);
+                  }}
+                />
         </label>
+        
+        
       </form>
       {!response.loading && <button onClick={handleSubmit} className="btn">Atualizar</button>}
       {response.loading && (

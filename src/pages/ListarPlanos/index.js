@@ -22,16 +22,16 @@ const ListarPlanos = ({className}) => {
   
    const planoCollectionRef = collection(db, "planos");
  
+   const getEmpresas = async () => {
+     
+     const lista_planos = await getDocs(planoCollectionRef);
+
+     
+     setDataPlanos(
+       lista_planos.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+     );
+   };
    useEffect(() => {
-     const getEmpresas = async () => {
-       
-       const lista_planos = await getDocs(planoCollectionRef);
- 
-       
-       setDataPlanos(
-         lista_planos.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-       );
-     };
      getEmpresas();
    }, []);
  
@@ -51,11 +51,9 @@ const ListarPlanos = ({className}) => {
 
     const userDoc = doc(db, "planos", id);
     await deleteDoc(userDoc);
+    getEmpresas();
   }
-  async function deleteEmpresa(id) {
-    const userDoc = doc(db, "empresas", id);
-    await deleteDoc(userDoc);
-  }
+  
   //deleteEmpresa('ywAoTNmx6EDNC4MWRMew')
   useEffect(() => {
     BuscaPlanoFiltro();
@@ -75,7 +73,7 @@ const ListarPlanos = ({className}) => {
                     <Link to={'/paineldecontrole/listar/planos/edit'} onClick={({target})=>{localStorage.setItem('plano',plan.nome)}}>Editar Plano</Link>
                     <button onClick={()=>{
                       deletePlano(plan.id)
-                      window.location.reload(true);
+                      
                     }} style={{backgroundColor: '#ff8d8d'}}><FaTrash/></button>
                 </div>
             </li>
