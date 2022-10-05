@@ -3,6 +3,9 @@ import style from "./CadEmpresa.module.css";
 import { useInsertDocument } from "../../hooks/insertEmpresa";
 import { useAuthValue } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate} from 'react-router-dom'
+
+
 
 const CadEmpresa = ({ className }) => {
   const [nome, setNome] = React.useState("");
@@ -14,14 +17,22 @@ const CadEmpresa = ({ className }) => {
   const [errorForm, setErrorForm] = React.useState("");
   const { user } = useAuthValue();
 
+  const nave = useNavigate();
 
   const { insertDocument, response } = useInsertDocument("empresas");
+
+  function redirect(nave){
+    
+    return(nave("/paineldecontrole/listar"))
+    
+
+  }
 
   //notificação de cadastro de empresa
   const notify = () =>
     toast.success("Cadastro feito com sucesso!", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -44,6 +55,8 @@ const CadEmpresa = ({ className }) => {
       chave,
     });
     notify();
+    setTimeout(redirect, 3000,nave)
+       
     
   };
 
@@ -131,7 +144,7 @@ const CadEmpresa = ({ className }) => {
       <ToastContainer
             theme="colored"
             position="top-right"
-            autoClose={3000}
+            autoClose={2000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

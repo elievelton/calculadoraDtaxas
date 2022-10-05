@@ -454,6 +454,7 @@ function Home() {
                   type="number"
                   name="valor"
                   id="valor"
+                  min="0"
                   placeholder="ex: R$ 4257,89"
                   
                   value = {valor}
