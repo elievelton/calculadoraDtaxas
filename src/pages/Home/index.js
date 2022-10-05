@@ -122,6 +122,7 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
+        console.log(calc[1]);
         taxaAtual = calc[1];
         desc = valo - valor;
         desconto = desc.toLocaleString("pt-BR", {
@@ -289,7 +290,7 @@ function Home() {
     setBuscaPlano(data);
   };
   const buscaEmpresaFiltro = () => {
-    empresa.filter(person => person.nome ===selecionarEmpresa).map(filteredPerson => (
+    empresa.filter(person => person.chave ===selecionarEmpresa).map(filteredPerson => (
       setNotaReclameAqui(filteredPerson.notaReclameAqui),
       setBannerUrl(filteredPerson.bannerUrl),
       setLink(filteredPerson.link)
@@ -297,16 +298,22 @@ function Home() {
     
   };
   const buscaMelhorEmQue = () => {
-    empresa.filter(person => person.nome ===selecionarEmpresa).map(filteredPerson => (
+    empresa.filter(person => person.chave ===selecionarEmpresa).map(filteredPerson => (
       setMelhorEmQue(filteredPerson.melhoremque)
     ))
     
   };
 
+  
+
   const setPlan = (e) => {
     setSelectPlano(e.nome);
-    setParcelamentodoPlano([e.recebimento1, e.recebimento15, e.recebimento30]);
+    const lista1 = Object.values(e.recebimento1)
+    const lista2 = Object.values(e.recebimento15)
+    const lista3 = Object.values(e.recebimento30)
+    setParcelamentodoPlano([lista1, lista2, lista3]);
     setPessoa(e.tipo);
+    console.log("Lista1", lista1)
   };
 
   useEffect(() => {
@@ -380,7 +387,7 @@ function Home() {
                   </option>
                   {empresa &&
                     empresa.map((empre) => {
-                      return <option key={empre.id}>{empre.nome}</option>;
+                      return <option key={empre.id}>{empre.chave}</option>;
                     })}
                 </select>
 

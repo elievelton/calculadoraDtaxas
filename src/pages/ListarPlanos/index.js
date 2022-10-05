@@ -12,6 +12,7 @@ import {FaTrash} from "react-icons/fa";
 
 const ListarPlanos = ({className}) => {
   const empresaRef = localStorage.getItem('empresa')
+  const empreNome = localStorage.getItem('nomeEmpresa')
   const [dataPlanos, setDataPlanos] = useState([]);
 
   const [buscaPlanos, setBuscaPlanos] = useState([]);
@@ -64,7 +65,7 @@ const ListarPlanos = ({className}) => {
 
   return (
     <div className={`${style.lista} ${className}`}>
-      <h2>Planos Cadastradas da <span>{empresaRef}</span></h2>
+      <h2>Planos Cadastradas da <span>{empreNome}</span></h2>
       <ul>
         {buscaPlanos.map(plan => {
             return <li key={plan.id} className={style.item}>

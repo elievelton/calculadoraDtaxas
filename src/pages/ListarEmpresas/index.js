@@ -43,8 +43,8 @@ const ListarEmpresas = ({ className }) => {
     getEmpresas();
   }
   //função busca todos os planos de uma empresa e deleta
-  const buscaEmpresaFiltro = (nome) => {
-    dataPlanos.filter(person => person.reference ===nome.toLowerCase()).map(filteredPerson => (
+  const buscaEmpresaFiltro = (chave) => {
+    dataPlanos.filter(person => person.reference ===chave.toLowerCase()).map(filteredPerson => (
       deletePlano(filteredPerson.id)
       ));
       
@@ -62,27 +62,30 @@ const ListarEmpresas = ({ className }) => {
                 <Link
                   to={"/paineldecontrole/listar/edit"}
                   onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.nome);
+                    localStorage.setItem("empresa", empresa.chave);
+                    localStorage.setItem("nomeEmpresa", empresa.nome);
                   }}>
                   Editar
                 </Link>
                 <Link
                   to={"/paineldecontrole/listar/planos"}
                   onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.nome);
+                    localStorage.setItem("empresa", empresa.chave);
+                    localStorage.setItem("nomeEmpresa", empresa.nome);
                   }}>
                   Ver Planos
                 </Link>
                 <Link
                   to={"/paineldecontrole/listar/cadastrarplano"}
                   onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.nome);
+                    localStorage.setItem("empresa", empresa.chave);
+                    localStorage.setItem("nomeEmpresa", empresa.nome);
                   }}>
                   Adicionar Plano
                 </Link>
                 <button style={{ backgroundColor: "#ff8d8d" }} onClick ={()=>{
                   deleteEmpresa(empresa.id)
-                  buscaEmpresaFiltro(empresa.nome)
+                  buscaEmpresaFiltro(empresa.chave)
                   
                 }} >
                   <FaTrash />

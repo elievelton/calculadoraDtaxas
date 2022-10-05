@@ -9,6 +9,7 @@ import { collection, getDocs } from "firebase/firestore";
 const EditEmpresa = ({ className }) => {
   
   const refEmpre = localStorage.getItem("empresa");
+  const empreNome = localStorage.getItem('nomeEmpresa')
   
   const [nome, setNome] = useState("");
   const [notaReclameAqui, setNotaReclameAqui] = useState();
@@ -52,7 +53,7 @@ const EditEmpresa = ({ className }) => {
 
   //função busca e seta as informações do BD
   const buscaEmpresaFiltro = () => {
-    empresas.filter(person => person.nome === refEmpre).map(filteredPerson => (
+    empresas.filter(person => person.chave === refEmpre).map(filteredPerson => (
       setNotaReclameAqui(filteredPerson.notaReclameAqui),
       setBannerUrl(filteredPerson.bannerUrl),
       setLink(filteredPerson.link),
@@ -87,7 +88,7 @@ const EditEmpresa = ({ className }) => {
 
   return (
     <div className={`${style.cadEmp} ${className}`}>
-      <h2>Editar empresa {refEmpre}</h2>
+      <h2>Editar empresa {empreNome}</h2>
       <form>
         <label htmlFor="nome">
           Nome da empresa:

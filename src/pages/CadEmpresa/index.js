@@ -10,8 +10,10 @@ const CadEmpresa = ({ className }) => {
   const [melhoremque, setmelhoremque] = React.useState("");
   const [bannerUrl, setBannerUrl] = React.useState("");
   const [link, setLink] = React.useState("");
+  const [chave, setChave] = React.useState("");
   const [errorForm, setErrorForm] = React.useState("");
   const { user } = useAuthValue();
+
 
   const { insertDocument, response } = useInsertDocument("empresas");
 
@@ -31,13 +33,15 @@ const CadEmpresa = ({ className }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrorForm("");
-
+    
+    
     insertDocument({
       nome,
       notaReclameAqui,
       melhoremque,
       bannerUrl,
       link,
+      chave,
     });
     notify();
     
@@ -55,7 +59,8 @@ const CadEmpresa = ({ className }) => {
             name="nome"
             id=""
             value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            onChange={(e) => {
+              setNome(e.target.value);setChave(e.target.value)}}
           />
         </label>
         <label htmlFor="url">
