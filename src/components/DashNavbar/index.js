@@ -37,7 +37,7 @@ function DashNavbar({className, children}) {
             setUser(user);
         })
     })
-    console.log(user)
+   
 
     // const {user} = useAuthValue();  
     const {logout} = useAuthentication();
@@ -49,12 +49,14 @@ function DashNavbar({className, children}) {
                 <div className={styles.items}>
                     {children}
                 </div>
+                <div className={styles.posicao}>
                 <div className={styles.items}>
                     <a href="#" className={styles.delete}><FaTrash  className={styles.lixo}/> Excluir conta</a>
                     <button onClick={logout} className={styles.sair}>
                         Sair
                     </button>
                     
+                </div>
                 </div>
                 
             </nav>

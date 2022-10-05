@@ -2,7 +2,7 @@ import DashNavbar from '../../components/DashNavbar'
 import styles from './Dashboard.module.css' 
 
 import { NavLink, Route, Routes, Navigate } from "react-router-dom";
-import {FaUserAlt,FaRegFileAlt} from "react-icons/fa";
+import {FaUserAlt,FaRegFileAlt,FaClipboardList,FaWpforms} from "react-icons/fa";
 import Perfil from '../Perfil';
 import Relatorio from '../Relatorio';
 import CadEmpresa from '../CadEmpresa';
@@ -19,9 +19,9 @@ function DashboardUser() {
         <div className={styles.container}>
             {isAdm ? (
                 <DashNavbar>
-                    <NavLink to="/paineldecontrole/user"><FaUserAlt size="1.8rem"/><span>Perfil</span></NavLink>
-                    <NavLink to="/paineldecontrole/cadastrarempresa"><FaUserAlt size="1.8rem"/><span>Cadastrar Empresa</span></NavLink>
-                    <NavLink to="/paineldecontrole/listar"><FaUserAlt size="1.8rem"/><span>Listar Empresas</span></NavLink>
+                    <NavLink to="/paineldecontrole/user"><FaUserAlt size="1.5rem"/><span>Perfil</span></NavLink>
+                    <NavLink to="/paineldecontrole/cadastrarempresa"><FaWpforms size="1.5rem"/><span>Cadastrar Empresa</span></NavLink>
+                    <NavLink to="/paineldecontrole/listar"><FaClipboardList size="1.5rem"/><span>Listar Empresas</span></NavLink>
                     
                 </DashNavbar>
             ) : (<DashNavbar className={styles.navbar}>

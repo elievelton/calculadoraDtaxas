@@ -29,6 +29,11 @@
 .lista li p::first-letter{
     text-transform: capitalize;
 }
+.lista{
+
+    height: 680px;
+    overflow-y: scroll;
+}
 
 
 .buttons button,

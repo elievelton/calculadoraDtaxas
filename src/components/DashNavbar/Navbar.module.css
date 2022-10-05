@@ -16,13 +16,22 @@
     width: 90%;
     margin: 0 auto;
 }
+.posicao{
+    width: 230px;
+    position: fixed;
+    top: 515px;
+    align: center;
+    right: 1145px;
+    align-text: center;
+
+}
 
 .nav a{
     display: inline-block;
     margin: 0 1rem;
     color:var(--textColor);
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     position: relative;
 }
 .nav svg{
@@ -32,6 +41,8 @@
 .nav .delete{
     display: flex;
     align-items: center;
+    padding-botton: 20px;
+    
 }
 .nav .lixo{
     font-size: 2.8rem;
