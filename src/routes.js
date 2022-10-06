@@ -54,7 +54,7 @@ function RoutesApp(){
         {window.location.pathname.includes('/paineldecontrole') ? <DashHeader/> : <Header/>} 
         {/* <Navbar/> */}
             <Routes>
-                <Route path='/' element = {<Home/>}/>
+                <Route path='/home' element = {<Home/>}/>
                 <Route path='/contato' element = {<Contato/>}/>
                 <Route path='/ofertas' element = {<Ofertas/>}/>
                 <Route path='/login' element = {!user ?<Login/> : <Navigate to ="/"/>}/>
