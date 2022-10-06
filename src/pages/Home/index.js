@@ -323,7 +323,7 @@ function Home() {
   }, [selecionarEmpresa]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/static/maquinas.json")
+    fetch("/static/maquinas.json")
       .then((response) => response.json())
       .then(setData);
   }, []);
