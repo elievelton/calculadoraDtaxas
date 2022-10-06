@@ -332,10 +332,16 @@
   .titulocalculadora h2{
     margin-top: 60px;
   }
+
   .slider{
+  .rsis-container {
+
     width: 80%;
     height: 500px;
+    display: flex;
   }
+}
+
   .carousel{
     width: 80%;
     
