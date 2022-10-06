@@ -49,7 +49,7 @@ function Home() {
     "11x",
     "12x",
   ];
-  let nota = 0;
+  
 
   // busca no banco de dados do firebase
   const empresaCollectionRef = collection(db, "empresas");
@@ -322,11 +322,11 @@ function Home() {
     buscaMelhorEmQue();
   }, [selecionarEmpresa]);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/static/maquinas.json")
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/static/maquinas.json")
+  //     .then((response) => response.json())
+  //     .then(setData);
+  // }, []);
 
 
 
