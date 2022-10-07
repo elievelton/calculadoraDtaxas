@@ -6,9 +6,10 @@
 }
 
 .lista ul{
-    width: 80%;
+    width: 90%;
     list-style: none;
     margin: 0 auto;
+    background-color:red;
 }
 
 .lista li{
@@ -18,15 +19,17 @@
     margin-bottom: 15px;
     background: var(--mainColor);
     color: white;
-    padding: 30px;
+    padding: 20px;
     font-size: 1.40rem;
     border-radius: 20px;
+    
     
 }
 
 .lista li .buttons{
     display: flex;
     align-items: center;
+    
 }
 
 .lista li p{
@@ -164,11 +167,11 @@
 .buttons a:hover{
     transform: scale(1.1)!important;
     transition: all 0.5s;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.6);
 
 }
-button:hover{
-    transform: scale(1.1)!important;
+.buttons button:hover{
+    transform: scale(1.1);
     transition: all 0.5s;
     background-color: rgba(255, 255, 255, 0.5);
 
