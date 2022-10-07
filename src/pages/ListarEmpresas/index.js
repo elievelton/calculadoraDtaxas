@@ -63,14 +63,9 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                      
-                    <FaEdit  size={18} />
+                    <FaEdit size={18} />
 
-                    
                     <span>Editar</span>
-                    
-                    
-                    
                   </Link>
                   <Link
                     to={"/paineldecontrole/listar/planos"}
@@ -78,9 +73,8 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                     <FaRegEye size={18}/> 
+                    <FaRegEye size={18} />
                     <span>Ver Planos</span>
-                    
                   </Link>
                   <Link
                     to={"/paineldecontrole/listar/cadastrarplano"}
@@ -88,7 +82,7 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                      <FaPlusCircle size ={18}/>
+                    <FaPlusCircle size={18} />
                     <span>Add Plano</span>
                   </Link>
                 </div>
@@ -105,6 +99,9 @@ const ListarEmpresas = ({ className }) => {
           );
         })}
       </ul>
+      <footer>
+        <p>@CalcT - 2022</p>
+      </footer>
     </div>
   );
 };
