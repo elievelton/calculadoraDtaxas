@@ -108,3 +108,11 @@ a.youtube:hover{
     
 }
 
+@media only screen and (max-width: 1024px){
+    .foot{
+        flex-direction: column;
+    }
+    .footer{
+        height: auto;
+    }
+}
