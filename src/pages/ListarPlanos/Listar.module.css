@@ -25,6 +25,7 @@
     padding: 20px;
     font-size: 1.40rem;
     border-radius: 20px;
+    fle-direction:column
 }
 
 .lista li p{
@@ -44,7 +45,7 @@
     padding: 6px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.20rem;
+    font-size: 0.6rem;
     margin-left: 10px;
 }
 
