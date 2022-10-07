@@ -2,7 +2,7 @@
 .lista h2{
     padding: 30px;
     margin-bottom: 20px;
-    text-size: 1rem;
+    
 }
 
 .lista ul{
@@ -21,11 +21,17 @@
     padding: 20px;
     font-size: 1.40rem;
     border-radius: 20px;
-    flex-direction: column;
+    
+}
+
+.lista li .buttons{
+    display: flex;
+    align-items: center;
 }
 
 .lista li p{
     font-weight: bold;
+    font-size: 2vw;
 }
 
 .lista li p::first-letter{
@@ -35,6 +41,62 @@
 
     height: 680px;
     overflow-y: scroll;
+    
+}
+@media (min-width: 320px) and (max-width: 700px) {
+    .lista li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background: var(--mainColor);
+        color: white;
+        padding: 20px;
+        
+        border-radius: 15px!important;
+        flex-direction: column!important;
+    }
+    .buttons button,
+    .buttons a{
+        color: white;
+        text-decoration: none;
+        background: var(--secudaryColor);
+        padding: 4px !important;
+        border-radius: 5px!important;
+        font-weight: bold !important;
+        font-size: .6rem !important;
+        margin-left: 0px!important;
+    }
+
+    .buttons button{
+        align-items: center !important;
+        padding: 8px !important;
+        width: 100% !important;
+    }
+    .buttons {
+        flex-direction:column !important;
+        width: 100% !important;
+        margin-top: 5px;
+    }
+    .menu{
+       display: flex!important;
+       width: 100% !important;
+       justify-content: space-between!important;
+    }
+
+    .lista h2{
+        padding: 20px;
+        margin-bottom: 10px !important;
+        text-size: .4rem !important;
+    }
+    .lista li p{
+        font-weight: bold;
+        font-size: 5vw;
+    }
+    .lista li {
+        font-size: 1.9rem !important;
+        
+    }
 }
 
 
@@ -46,7 +108,7 @@
     padding: 3px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: .60rem;
+    font-size: 2vw;
     margin-left: 8px;
 }
 

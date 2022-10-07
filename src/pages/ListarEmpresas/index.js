@@ -31,7 +31,6 @@ const ListarEmpresas = ({ className }) => {
     getEmpresas();
   }, []);
 
- 
   //Funções para deletar empresa e plano precisa apenas do id
   async function deletePlano(id) {
     const userDoc = doc(db, "planos", id);
@@ -44,11 +43,10 @@ const ListarEmpresas = ({ className }) => {
   }
   //função busca todos os planos de uma empresa e deleta
   const buscaEmpresaFiltro = (chave) => {
-    dataPlanos.filter(person => person.reference ===chave.toLowerCase()).map(filteredPerson => (
-      deletePlano(filteredPerson.id)
-      ));
-      
-};
+    dataPlanos
+      .filter((person) => person.reference === chave.toLowerCase())
+      .map((filteredPerson) => deletePlano(filteredPerson.id));
+  };
 
   return (
     <div className={`${style.lista} ${className}`}>
@@ -59,35 +57,38 @@ const ListarEmpresas = ({ className }) => {
             <li key={empresa.id} className={style.item}>
               <p>{empresa.nome}</p>
               <div className={style.buttons}>
-                <Link
-                  to={"/paineldecontrole/listar/edit"}
-                  onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.chave);
-                    localStorage.setItem("nomeEmpresa", empresa.nome);
+                <div className={style.menu}>
+                  <Link
+                    to={"/paineldecontrole/listar/edit"}
+                    onClick={(target) => {
+                      localStorage.setItem("empresa", empresa.chave);
+                      localStorage.setItem("nomeEmpresa", empresa.nome);
+                    }}>
+                    Editar
+                  </Link>
+                  <Link
+                    to={"/paineldecontrole/listar/planos"}
+                    onClick={(target) => {
+                      localStorage.setItem("empresa", empresa.chave);
+                      localStorage.setItem("nomeEmpresa", empresa.nome);
+                    }}>
+                    Ver Planos
+                  </Link>
+                  <Link
+                    to={"/paineldecontrole/listar/cadastrarplano"}
+                    onClick={(target) => {
+                      localStorage.setItem("empresa", empresa.chave);
+                      localStorage.setItem("nomeEmpresa", empresa.nome);
+                    }}>
+                    Adicionar Plano
+                  </Link>
+                </div>
+                <button
+                  style={{ backgroundColor: "#ff8d8d" }}
+                  onClick={() => {
+                    deleteEmpresa(empresa.id);
+                    buscaEmpresaFiltro(empresa.chave);
                   }}>
-                  Editar
-                </Link>
-                <Link
-                  to={"/paineldecontrole/listar/planos"}
-                  onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.chave);
-                    localStorage.setItem("nomeEmpresa", empresa.nome);
-                  }}>
-                  Ver Planos
-                </Link>
-                <Link
-                  to={"/paineldecontrole/listar/cadastrarplano"}
-                  onClick={(target) => {
-                    localStorage.setItem("empresa", empresa.chave);
-                    localStorage.setItem("nomeEmpresa", empresa.nome);
-                  }}>
-                  Adicionar Plano
-                </Link>
-                <button style={{ backgroundColor: "#ff8d8d" }} onClick ={()=>{
-                  deleteEmpresa(empresa.id)
-                  buscaEmpresaFiltro(empresa.chave)
-                  
-                }} >
                   <FaTrash />
                 </button>
               </div>
