@@ -9,6 +9,7 @@ const Perfil = ({ className }) => {
   const [passwordC, setPasswordC] = useState("");
 
   return (
+    <>
     <div className={`${style.user} ${className}`}>
       <h2 className="content">Editar Perfil</h2>
       <form action="" className={style.form}>
@@ -30,10 +31,12 @@ const Perfil = ({ className }) => {
         </label>
       </form>
       <button>Salvar perfil</button>
-      <div className ={style.fixarFooter}>
-      <DashFooter />
-      </div>
+      
+    
+    <DashFooter />
+    
     </div>
+    </>
   );
 };
 

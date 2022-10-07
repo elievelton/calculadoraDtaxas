@@ -177,7 +177,7 @@
   .btn{
     grid-area: comprar;
     background: #3498db;
-    padding: 1px;
+    padding: 10px;
     border-radius: 50px;
     width: 100%;
     height: 100%;
