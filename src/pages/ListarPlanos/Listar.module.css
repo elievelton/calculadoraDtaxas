@@ -48,7 +48,7 @@
     overflow-y: scroll;
     
 }
-@media (min-width: 320px) and (max-width: 700px) {
+@media (min-width: 320px) and (max-width: 900px) {
     .lista li{
         display: flex;
         justify-content: space-between;
@@ -182,3 +182,6 @@
     align-items: center;
     font-size: 1.5rem;
  }
+ .lista::-webkit-scrollbar {
+    background: #fff;
+  }

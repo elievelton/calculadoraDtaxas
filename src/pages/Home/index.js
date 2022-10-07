@@ -9,7 +9,6 @@ import AwesomeSlider from "react-awesome-slider";
 import { FaCheckCircle } from "react-icons/fa";
 import "react-awesome-slider/dist/styles.css";
 import "react-awesome-slider/dist/custom-animations/cube-animation.css";
-import SimpleImageSlider from "react-simple-image-slider";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 
