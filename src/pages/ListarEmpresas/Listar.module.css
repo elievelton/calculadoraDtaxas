@@ -2,6 +2,7 @@
 .lista h2{
     padding: 30px;
     margin-bottom: 20px;
+    text-size: 1rem;
 }
 
 .lista ul{
@@ -20,6 +21,7 @@
     padding: 20px;
     font-size: 1.40rem;
     border-radius: 20px;
+    flex-direction: column;
 }
 
 .lista li p{
@@ -41,11 +43,11 @@
     color: white;
     text-decoration: none;
     background: var(--secudaryColor);
-    padding: 6px;
+    padding: 3px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.20rem;
-    margin-left: 10px;
+    font-size: .60rem;
+    margin-left: 8px;
 }
 
 .buttons button{
