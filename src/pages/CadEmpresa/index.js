@@ -4,6 +4,7 @@ import { useInsertDocument } from "../../hooks/insertEmpresa";
 import { useAuthValue } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate} from 'react-router-dom'
+import { DashFooter } from "../../components/DashFooter";
 
 
 
@@ -140,6 +141,8 @@ const CadEmpresa = ({ className }) => {
       )}
 
       {response.error && <p className="error">{response.error}</p>}
+      
+      <DashFooter />
       </div>
       <ToastContainer
             theme="colored"

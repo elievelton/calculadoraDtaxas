@@ -5,6 +5,7 @@ import style from "./CadPlano.module.css";
 import { useInsertDocument } from "../../hooks/insertEmpresa";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
+import { DashFooter } from "../../components/DashFooter";
 
 const CadPlano = ({ className }) => {
   const [nome, setNome] = useState("");
@@ -808,6 +809,7 @@ const CadPlano = ({ className }) => {
         )}
 
         {response.error && <p className="error">{response.error}</p>}
+        <DashFooter/>
       </div>
 
       <ToastContainer

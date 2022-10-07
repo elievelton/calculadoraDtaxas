@@ -6,6 +6,7 @@ import { db } from "../../firebase/config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaRegEye, FaPlusCircle } from "react-icons/fa";
+import { DashFooter } from "../../components/DashFooter";
 
 const ListarEmpresas = ({ className }) => {
   const [dataPlanos, setDataPlanos] = useState([]);
@@ -99,9 +100,7 @@ const ListarEmpresas = ({ className }) => {
           );
         })}
       </ul>
-      <footer>
-        <p>@CalcT - 2022</p>
-      </footer>
+      <DashFooter/>
     </div>
   );
 };

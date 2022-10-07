@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.Dasheboard{
+    width: 98%;
+    height: 80px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    align-items: center;
+    margin-left: 11px;
+    margin-top: 11px;
+    margin-right: 1%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.Dasheboard p {
+    font-weight: bold;
+    color: #585858;
+}

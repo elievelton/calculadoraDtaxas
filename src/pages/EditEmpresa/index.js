@@ -5,6 +5,8 @@ import { useAuthValue } from "../../context/AuthContext";
 import { useEffect, useState, useRef } from "react";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
+import { DashFooter } from "../../components/DashFooter";
+import { ToastContainer, toast } from "react-toastify";
 
 const EditEmpresa = ({ className }) => {
   
@@ -84,9 +86,23 @@ const EditEmpresa = ({ className }) => {
       link,
     }
     updateDocument(id,data);
+    notify();
   };
 
+  //notificação de cadastro de empresa
+  const notify = () =>
+  toast.success("Dados atualizado com sucesso!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
   return (
+    <>
     <div className={`${style.cadEmp} ${className}`}>
       <h2>Editar empresa {empreNome}</h2>
       <form>
@@ -159,7 +175,21 @@ const EditEmpresa = ({ className }) => {
       )}
 
       {response.error && <p className="error">{response.error}</p>}
+      <DashFooter/>
     </div>
+    <ToastContainer
+    theme="colored"
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+  />
+    </>
   );
 };
 

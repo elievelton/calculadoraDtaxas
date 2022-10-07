@@ -9,7 +9,7 @@
     width: 90%;
     list-style: none;
     margin: 0 auto;
-    background-color:red;
+    
 }
 
 .lista li{
@@ -42,12 +42,7 @@
     text-transform: capitalize;
     
 }
-.lista{
 
-    height: 680px;
-    overflow-y: scroll;
-    
-}
 @media (min-width: 320px) and (max-width: 900px) {
     .lista li{
         display: flex;
@@ -182,6 +177,14 @@
     align-items: center;
     font-size: 1.5rem;
  }
+ 
  .lista::-webkit-scrollbar {
     background: #fff;
+  }
+
+  .fixarFooter{
+       bottom: 0;
+        position: fixed;
+        width: 80%;
+        text-align: center;
   }

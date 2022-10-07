@@ -7,6 +7,7 @@ import { db } from "../../firebase/config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import {FaTrash, FaEdit} from "react-icons/fa";
+import { DashFooter } from "../../components/DashFooter";
 
 
 
@@ -83,6 +84,9 @@ const ListarPlanos = ({className}) => {
             </li>
         })}
       </ul>
+      <div className ={style.fixarFooter}>
+      <DashFooter />
+      </div>
     </div>
     
   );

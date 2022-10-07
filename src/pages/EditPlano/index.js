@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
+import { DashFooter } from "../../components/DashFooter";
 
 const EditPlano = ({className}) => {
 
@@ -78,7 +79,7 @@ const [recebimento301,setrecebimento301] = useState({"avista": '',
 
   //notificação de cadastro de empresa
   const notify = () =>
-  toast.success("Cadastro feito com sucesso!", {
+  toast.success("Plano atualizado!", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -160,6 +161,7 @@ const [recebimento301,setrecebimento301] = useState({"avista": '',
 
 console.log(Object.values(recebimento151))
   return (
+    <>
     <div className={`${style.cadplanos} ${className}`}>
         <h2>Editar Plano (<span>{localStorage.getItem('plano')}</span>)</h2>
         <form action="" className={style.plano}>
@@ -355,7 +357,21 @@ console.log(Object.values(recebimento151))
       )}
 
       {response.error && <p className="error">{response.error}</p>}
+      <DashFooter/>
     </div>
+    <ToastContainer
+    theme="colored"
+    position="top-right"
+    autoClose={3000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+  />
+  </>
   )
 }
 

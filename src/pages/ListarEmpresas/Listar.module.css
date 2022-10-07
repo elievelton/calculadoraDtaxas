@@ -41,14 +41,16 @@
 }
 .lista{
 
-    height: 680px;
+    height: 100%;
     overflow-y: scroll;
+    width: 100%;
+    
     
 
     
 }
 .lista::-webkit-scrollbar {
-    background: #fff;
+    background: transparent;
   } 
 @media (min-width: 320px) and (max-width: 900px) {
     .lista li{
@@ -182,10 +184,3 @@
     align-items: center;
     font-size: 1.5rem;
  }
-.lista footer{
-    bottom: 0;
-    position: bottom;
-    width: 95%;
-    text-align: center;
-    background-color: red;
-}
