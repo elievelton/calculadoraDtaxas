@@ -89,7 +89,7 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
                       <FaPlusCircle size ={18}/>
-                    <span>Adicionar Plano</span>
+                    <span>Add Plano</span>
                   </Link>
                 </div>
                 <button
