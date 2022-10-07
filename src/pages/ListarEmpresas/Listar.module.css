@@ -56,32 +56,51 @@
         border-radius: 15px!important;
         flex-direction: column!important;
     }
+    h2{
+        font-size: 5vw !important;
+        font-weight: bold !important;
+    }
     .buttons button,
     .buttons a{
         color: white;
         text-decoration: none;
         background: var(--secudaryColor);
-        padding: 4px !important;
+        padding: 3px !important;
         border-radius: 5px!important;
         font-weight: bold !important;
-        font-size: .6rem !important;
+        font-size: .73rem !important;
         margin-left: 0px!important;
+        
     }
 
     .buttons button{
         align-items: center !important;
         padding: 8px !important;
-        width: 100% !important;
+        
+        margin-top: 8px;
+        width: 95% !important;
+        margin-left: 5px !important;
     }
     .buttons {
         flex-direction:column !important;
         width: 100% !important;
         margin-top: 5px;
+        
+        
+        
+        
+    }
+    .buttons a:hover{
+        transform: scale(1.0);
+        transition: all 0.5s;
+        background-color: rgba(255, 255, 255, 0.5);
+
     }
     .menu{
        display: flex!important;
        width: 100% !important;
        justify-content: space-between!important;
+       
     }
 
     .lista h2{
@@ -108,10 +127,28 @@
     padding: 3px;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 2vw;
+    font-size: 1.2rem ;
     margin-left: 8px;
+    
 }
 
 .buttons button{
     padding: 8px;
+    height:39px;
+    width: 100%;
+    
+    
+}
+
+.buttons a:hover{
+    transform: scale(1.1)!important;
+    transition: all 0.5s;
+    background-color: rgba(255, 255, 255, 0.5);
+
+}
+button:hover{
+    transform: scale(1.1)!important;
+    transition: all 0.5s;
+    background-color: rgba(255, 255, 255, 0.5);
+
 }
