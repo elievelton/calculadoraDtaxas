@@ -1,12 +1,11 @@
 import React from "react";
-import { Link, Navigate, Route, Routes } from "react-router-dom";
-import CadEmpresa from "../CadEmpresa";
-import Relatorio from "../Relatorio";
+import { Link } from "react-router-dom";
+
 import style from "./Listar.module.css";
 import { db } from "../../firebase/config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaEdit, FaRegEye, FaPlusCircle } from "react-icons/fa";
 
 const ListarEmpresas = ({ className }) => {
   const [dataPlanos, setDataPlanos] = useState([]);
@@ -64,7 +63,14 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                    Editar
+                      
+                    <FaEdit  size={18} />
+
+                    
+                    <span>Editar</span>
+                    
+                    
+                    
                   </Link>
                   <Link
                     to={"/paineldecontrole/listar/planos"}
@@ -72,7 +78,9 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                    Ver Planos
+                     <FaRegEye size={18}/> 
+                    <span>Ver Planos</span>
+                    
                   </Link>
                   <Link
                     to={"/paineldecontrole/listar/cadastrarplano"}
@@ -80,7 +88,8 @@ const ListarEmpresas = ({ className }) => {
                       localStorage.setItem("empresa", empresa.chave);
                       localStorage.setItem("nomeEmpresa", empresa.nome);
                     }}>
-                    Adicionar Plano
+                      <FaPlusCircle size ={18}/>
+                    <span>Adicionar Plano</span>
                   </Link>
                 </div>
                 <button

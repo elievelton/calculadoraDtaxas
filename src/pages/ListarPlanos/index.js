@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CadEmpresa from "../CadEmpresa";
 import Relatorio from "../Relatorio";
 import style from "./Listar.module.css"
 import { db } from "../../firebase/config";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import {FaTrash} from "react-icons/fa";
+import {FaTrash, FaEdit} from "react-icons/fa";
 
 
 
@@ -71,11 +71,14 @@ const ListarPlanos = ({className}) => {
             return <li key={plan.id} className={style.item}>
                 <p>{plan.nome}</p> 
                 <div className={style.buttons}>
-                    <Link to={'/paineldecontrole/listar/planos/edit'} onClick={({target})=>{localStorage.setItem('plano',plan.nome)}}>Editar Plano</Link>
+                  <div className={style.menu}>
+                      
+                    <Link  to={'/paineldecontrole/listar/planos/edit'} onClick={({target})=>{localStorage.setItem('plano',plan.nome)}}><FaEdit size={18}/><span>Editar Plano</span></Link>
                     <button onClick={()=>{
                       deletePlano(plan.id)
                       
-                    }} style={{backgroundColor: '#ff8d8d'}}><FaTrash/></button>
+                    }} style={{backgroundColor: '#ff8d8d'}}><FaTrash size={20}/></button>
+                </div>
                 </div>
             </li>
         })}

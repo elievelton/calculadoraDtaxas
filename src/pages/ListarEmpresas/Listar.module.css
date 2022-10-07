@@ -18,7 +18,7 @@
     margin-bottom: 15px;
     background: var(--mainColor);
     color: white;
-    padding: 20px;
+    padding: 30px;
     font-size: 1.40rem;
     border-radius: 20px;
     
@@ -32,10 +32,12 @@
 .lista li p{
     font-weight: bold;
     font-size: 2vw;
+    
 }
 
 .lista li p::first-letter{
     text-transform: capitalize;
+    
 }
 .lista{
 
@@ -60,16 +62,25 @@
         font-size: 5vw !important;
         font-weight: bold !important;
     }
+    .lista a span{
+       display: inline-block !important;
+       margin-left: 10px !important;
+       
+       font-size: 1.2rem !important;
+    }
+    
     .buttons button,
     .buttons a{
         color: white;
         text-decoration: none;
         background: var(--secudaryColor);
-        padding: 3px !important;
+        padding: 10px !important;
         border-radius: 5px!important;
         font-weight: bold !important;
-        font-size: .67rem !important;
+        font-size: .90rem !important;
         margin-left: 0px!important;
+        align-items: center !important;
+        
         
         
     }
@@ -78,7 +89,7 @@
         align-items: center !important;
         padding: 8px !important;
         
-        margin-top: 8px;
+        margin-top: 12px;
         width: 95% !important;
         margin-left: 4px !important;
         
@@ -99,8 +110,15 @@
        display: flex!important;
        width: 100% !important;
        justify-content: space-between!important;
+       padding: 4px;
+       flex-direction:column;
+       gap: 5px;
+       aline-content: center !important;
        
+       
+
     }
+    
 
     .lista h2{
         padding: 20px;
@@ -110,6 +128,7 @@
     .lista li p{
         font-weight: bold;
         font-size: 5vw;
+        
     }
     .lista li {
         font-size: 1.9rem !important;
@@ -123,18 +142,19 @@
     color: white;
     text-decoration: none;
     background: var(--secudaryColor);
-    padding: 3px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 6px;
     font-weight: bold;
-    font-size: 1.2rem ;
+    font-size: 1.rem; ;
     margin-left: 8px;
 
     
 }
 
 .buttons button{
-    padding: 8px;
-    height:39px;
+    height:50px;
+    width:50px;
+    align-items: center;
       
     
 }
@@ -151,3 +171,9 @@ button:hover{
     background-color: rgba(255, 255, 255, 0.5);
 
 }
+.lista a span{
+    display: inline-block;
+    margin-left: 10px;
+    align-items: center;
+    font-size: 1.5rem;
+ }

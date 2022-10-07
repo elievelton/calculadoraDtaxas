@@ -2,44 +2,7 @@
 .lista h2{
     padding: 30px;
     margin-bottom: 20px;
-    font-size: 3vw;
     
-}
-@media (min-width: 320px) and (max-width: 700px){
-    .lista h2{
-        font-size: 1.5rem;
-    }
-    .buttons button{
-        padding: 8px;
-        height: 30px!important;
-    }
-    .buttons a:hover{
-        transform: scale(1.1);
-        transition: all 0.5s;
-        background-color: rgba(255, 255, 255, 0.5);
-    
-    }
-   
-    .buttons button,
-    .buttons a{
-        color: white;
-        text-decoration: none;
-        background: var(--secudaryColor);
-        padding: 4px;
-        border-radius: 10px;
-        font-weight: bold;
-        font-size: 0.70rem !important;
-        margin-left: 8px;
-    }
-
-.buttons button{
-    padding: 6px;
-}
-}
-
-.lista h2 span{
-    color: var(--mainColor);
-    font-weight: bold;
 }
 
 .lista ul{
@@ -55,18 +18,124 @@
     margin-bottom: 15px;
     background: var(--mainColor);
     color: white;
-    padding: 20px;
+    padding: 30px;
     font-size: 1.40rem;
     border-radius: 20px;
-    fle-direction:column
+    
+}
+
+.lista li .buttons{
+    display: flex;
+    align-items: center;
 }
 
 .lista li p{
     font-weight: bold;
+    font-size: 2vw;
+    
 }
 
 .lista li p::first-letter{
     text-transform: capitalize;
+    
+}
+.lista{
+
+    height: 680px;
+    overflow-y: scroll;
+    
+}
+@media (min-width: 320px) and (max-width: 700px) {
+    .lista li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        background: var(--mainColor);
+        color: white;
+        padding: 20px;
+        
+        border-radius: 15px!important;
+        flex-direction: column!important;
+    }
+    h2{
+        font-size: 5vw !important;
+        font-weight: bold !important;
+    }
+    .lista a span{
+       display: inline-block !important;
+       margin-left: 10px !important;
+       
+       font-size: 1.2rem !important;
+    }
+    
+    .buttons button,
+    .buttons a{
+        color: white;
+        text-decoration: none;
+        background: var(--secudaryColor);
+        padding: 10px !important;
+        border-radius: 5px!important;
+        font-weight: bold !important;
+        font-size: .90rem !important;
+        margin-left: 5px!important;
+        align-items: center !important;
+        width: 95% !important;
+        
+        
+        
+    }
+
+    .buttons button{
+        align-items: center !important;
+        padding: 8px !important;
+        
+        margin-top: 12px;
+        width: 95% !important;
+        margin-left: 5px !important;
+        
+    }
+    .buttons {
+        flex-direction:column;
+        width: 100% !important;
+        margin-top: 5px;       
+        
+    }
+    .buttons a:hover{
+        transform: scale(1.1);
+        transition: all 0.5s;
+        background-color: rgba(255, 255, 255, 0.5);
+
+    }
+    .menu{
+       display: flex!important;
+       width: 100% !important;
+       justify-content: space-between!important;
+       padding: 4px;
+       flex-direction:column;
+       gap: 5px;
+       aline-content: center !important;
+       
+       
+
+    }
+    
+
+    .lista h2{
+        padding: 20px;
+        margin-bottom: 10px !important;
+        text-size: .4rem !important;
+    }
+    .lista li p{
+        font-weight: bold;
+        font-size: 5vw;
+        
+    }
+    .lista li {
+        font-size: 1.9rem !important;
+        
+        
+    }
 }
 
 
@@ -75,17 +144,23 @@
     color: white;
     text-decoration: none;
     background: var(--secudaryColor);
-    padding: 4px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 6px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.rem; ;
     margin-left: 8px;
+
+    
 }
 
 .buttons button{
-    padding: 8px;
-    height: 39px;
+    height:50px;
+    width:50px;
+    align-items: center;
+      
+    
 }
+
 .buttons a:hover{
     transform: scale(1.1)!important;
     transition: all 0.5s;
@@ -98,3 +173,9 @@ button:hover{
     background-color: rgba(255, 255, 255, 0.5);
 
 }
+.lista a span{
+    display: inline-block;
+    margin-left: 10px;
+    align-items: center;
+    font-size: 1.5rem;
+ }
