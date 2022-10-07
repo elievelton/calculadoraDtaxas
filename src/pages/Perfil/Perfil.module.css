@@ -31,3 +31,10 @@
     outline: 3px solid white; /* fill */
     margin-left: 40px;
 }
+.fixarFooter{
+    bottom: 0;
+     position: fixed;
+     width: 100%;
+     text-align: center;
+     display:flex;
+}

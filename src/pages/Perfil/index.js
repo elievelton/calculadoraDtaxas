@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./Perfil.module.css";
+import { DashFooter } from "../../components/DashFooter";
 
 const Perfil = ({ className }) => {
   const [nome, setNome] = useState("");
@@ -29,6 +30,9 @@ const Perfil = ({ className }) => {
         </label>
       </form>
       <button>Salvar perfil</button>
+      <div className ={style.fixarFooter}>
+      <DashFooter />
+      </div>
     </div>
   );
 };

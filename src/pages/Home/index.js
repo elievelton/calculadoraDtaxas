@@ -387,7 +387,7 @@ function Home() {
                   </option>
                   {empresa &&
                     empresa.map((empre) => {
-                      return <option key={empre.id}>{empre.chave}</option>;
+                      return <option key={empre.id}>{empre.nome}</option>;
                     })}
                 </select>
 
