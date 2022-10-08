@@ -43,7 +43,7 @@ function DashboardUser() {
 
         if(userCorrente === adm1 || userCorrente === adm2){
             isAdm = true
-            refreshPage();
+            
         }
     
     return(
