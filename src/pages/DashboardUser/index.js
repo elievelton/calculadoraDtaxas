@@ -45,6 +45,9 @@ function DashboardUser() {
             isAdm = true
             
         }
+        else{
+            isAdm = false
+        }
     
     return(
         <>
