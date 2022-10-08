@@ -59,7 +59,7 @@ function RoutesApp(){
                 <Route path='/ofertas' element = {<Ofertas/>}/>
                 <Route path='/login' element = {!user ?<Login/> : <Navigate to ="/"/>}/>
                 <Route path='/sobre' element = {<Sobre/>}/>
-                <Route path='/cadastro' element = {!user ?<Cadastro/> : <Navigate to ="/login"/>}/>
+                <Route path='/cadastro' element = {!user ?<Cadastro/> : <Navigate to ="/login" refresh="true"/>}/>
                 <Route path='/paineldecontrole/*' element = {user ?<DashboardUser/> : <Navigate to ="/login"/>}/>
                 
                 <Route path='/admin/' element = {<Admin/>}/>

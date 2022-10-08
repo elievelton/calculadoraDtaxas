@@ -1,7 +1,10 @@
 import DashNavbar from '../../components/DashNavbar'
 import styles from './Dashboard.module.css' 
+import { useAuthentication } from "../../hooks/userAuthentucation";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 
-import { NavLink, Route, Routes, Navigate } from "react-router-dom";
+import { NavLink, Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import {FaUserAlt,FaRegFileAlt,FaClipboardList,FaWpforms} from "react-icons/fa";
 import Perfil from '../Perfil';
 import Relatorio from '../Relatorio';
@@ -11,11 +14,36 @@ import ListarPlanos from '../ListarPlanos';
 import CadPlano from '../CadPlano';
 import EditPlano from '../EditPlano';
 import EditEmpresa from '../EditEmpresa';
+import ErrorN from '../ErrorN';
 
 
 function DashboardUser() {
-    const isAdm = true
+    //hook usado para pegar a informação de quem está logado
+    const {auth } = useAuthentication();
+
+    const [userCorrente, setuserCorrente] = useState("");
+    const adm1 = "IndzODiLpaWm8h87kjgyy1gdx882"
+    const adm2 = "4kB7F7MWIvhdqQOERhyqaJtgtJz1"
+    let isAdm = true;
+    let nav = useNavigate()
+    
+    useEffect(() => {
+        setuserCorrente(auth.currentUser.uid);
+    }, []);
+    
+
+    console.log(userCorrente);
+    
+    
+     
+
+        function refreshPage(){ 
+          window.location.reload(); 
+        }
+    
     return(
+        <>
+        
         <div className={styles.container}>
             {isAdm ? (
                 <DashNavbar>
@@ -30,19 +58,21 @@ function DashboardUser() {
             </DashNavbar>)}
             <Routes>
                 <Route path='/' element={<Navigate to ="/paineldecontrole/user"/>}/>
+                <Route path='/error' element={<ErrorN className={styles.content}/>}/>
                 <Route path='/user' element={<Perfil className={styles.content}/>}/>
                 <Route path='/relatorio' element={<Relatorio/>}/>
-                <Route path='/cadastrarempresa' element={<CadEmpresa className={styles.content}/>}/>
-                <Route path='/listar' element={<ListarEmpresas className={styles.content}/>}/>
-                <Route path='/listar/edit' element={<EditEmpresa className={styles.content}/>}/>
-                <Route path='/listar/planos' element={<ListarPlanos className={styles.content}/>}/>
-                <Route path='/listar/planos/edit' element={<EditPlano className={styles.content}/>}/>
-                <Route path='/listar/cadastrarplano' element={<CadPlano className={styles.content}/>}/>
+                <Route path='/cadastrarempresa' element={isAdm ?<CadEmpresa className={styles.content} /> : <Navigate to ="/"  />}/>
+                <Route path='/listar' element={isAdm ? <ListarEmpresas className={styles.content}/>: <Navigate to ="/"  />}/>
+                <Route path='/listar/edit' element={isAdm?<EditEmpresa className={styles.content}/>: <Navigate to ="/"  />}/>
+                <Route path='/listar/planos' element={isAdm? <ListarPlanos className={styles.content}/>: <Navigate to ="/"  />}/>
+                <Route path='/listar/planos/edit' element={isAdm?<EditPlano className={styles.content}/>: <Navigate to ="/"  />}/>
+                <Route path='/listar/cadastrarplano' element={isAdm?<CadPlano className={styles.content}/>: <Navigate to ="/"  />}/>
             </Routes>
             
 
         </div>
-
+        
+</>
     );
 }
 export default DashboardUser;

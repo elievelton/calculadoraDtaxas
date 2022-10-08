@@ -2,7 +2,7 @@ import React from "react";
 import style from "./EditEmpresa.module.css";
 import { useUpdateDocument } from "../../hooks/updateDocument";
 import { useAuthValue } from "../../context/AuthContext";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../../firebase/config";
 import { collection, getDocs } from "firebase/firestore";
 import { DashFooter } from "../../components/DashFooter";
