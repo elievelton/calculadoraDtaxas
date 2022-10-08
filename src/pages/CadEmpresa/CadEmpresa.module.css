@@ -39,3 +39,15 @@
 .cadEmp::-webkit-scrollbar {
     background: transparent;
   } 
+
+@media (max-width: 900px){
+    .cadEmp form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 80%;
+    }
+    .cadEmp label{
+        width: 100%;
+    }
+}

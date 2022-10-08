@@ -68,3 +68,13 @@
 .cadplanos input{
     
 }
+
+@media (max-width: 900px){
+    .mainInfo{
+        display: flex;
+        flex-direction: column;
+    }
+    .recebimentos{
+        grid-template-columns: 1fr;
+    }
+}

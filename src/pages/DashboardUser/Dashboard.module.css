@@ -21,3 +21,9 @@
     font-weight: normal;
     margin-bottom: 3rem;
 }
+
+@media (max-width: 900px){
+    .content h2{
+        font-size: 1.9rem !important;
+    }
+}
