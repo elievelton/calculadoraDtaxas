@@ -24,8 +24,8 @@ function DashboardUser() {
     const [userCorrente, setuserCorrente] = useState("");
     const adm1 = "IndzODiLpaWm8h87kjgyy1gdx882"
     const adm2 = "4kB7F7MWIvhdqQOERhyqaJtgtJz1"
-    let isAdm = true;
-    let nav = useNavigate()
+    let isAdm = false;
+   
     
     useEffect(() => {
         setuserCorrente(auth.currentUser.uid);
@@ -39,6 +39,11 @@ function DashboardUser() {
 
         function refreshPage(){ 
           window.location.reload(); 
+        }
+
+        if(userCorrente === adm1 || userCorrente === adm2){
+            isAdm = true
+            refreshPage();
         }
     
     return(
@@ -61,12 +66,12 @@ function DashboardUser() {
                 <Route path='/error' element={<ErrorN className={styles.content}/>}/>
                 <Route path='/user' element={<Perfil className={styles.content}/>}/>
                 <Route path='/relatorio' element={<Relatorio/>}/>
-                <Route path='/cadastrarempresa' element={isAdm ?<CadEmpresa className={styles.content} /> : <Navigate to ="/"  />}/>
-                <Route path='/listar' element={isAdm ? <ListarEmpresas className={styles.content}/>: <Navigate to ="/"  />}/>
-                <Route path='/listar/edit' element={isAdm?<EditEmpresa className={styles.content}/>: <Navigate to ="/"  />}/>
-                <Route path='/listar/planos' element={isAdm? <ListarPlanos className={styles.content}/>: <Navigate to ="/"  />}/>
-                <Route path='/listar/planos/edit' element={isAdm?<EditPlano className={styles.content}/>: <Navigate to ="/"  />}/>
-                <Route path='/listar/cadastrarplano' element={isAdm?<CadPlano className={styles.content}/>: <Navigate to ="/"  />}/>
+                <Route path='/cadastrarempresa' element={isAdm ?<CadEmpresa className={styles.content} /> : <Navigate to ="/paineldecontrole/error" refresh="true" />}/>
+                <Route path='/listar' element={isAdm ? <ListarEmpresas className={styles.content}/>: <Navigate to ="/paineldecontrole/error"  />}/>
+                <Route path='/listar/edit' element={isAdm?<EditEmpresa className={styles.content}/>: <Navigate to ="/paineldecontrole/error"  />}/>
+                <Route path='/listar/planos' element={isAdm? <ListarPlanos className={styles.content}/>: <Navigate to ="/paineldecontrole/error"  />}/>
+                <Route path='/listar/planos/edit' element={isAdm?<EditPlano className={styles.content}/>: <Navigate to ="/paineldecontrole/error"  />}/>
+                <Route path='/listar/cadastrarplano' element={isAdm?<CadPlano className={styles.content}/>: <Navigate to ="/paineldecontrole/error"  />}/>
             </Routes>
             
 
