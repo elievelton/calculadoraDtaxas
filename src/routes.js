@@ -21,6 +21,7 @@ import Header from './components/Header';
 import DashHeader from './components/DashHeader';
 // import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import {RedefinirSenha} from "./pages/RedefinirSenha";
 
 // Fazendo as configurações das rotas do site
 
@@ -61,6 +62,7 @@ function RoutesApp(){
                 <Route path='/sobre' element = {<Sobre/>}/>
                 <Route path='/cadastro' element = {!user ?<Cadastro/> : <Navigate to ="/login" refresh="true"/>}/>
                 <Route path='/paineldecontrole/*' element = {user ?<DashboardUser/> : <Navigate to ="/login"/>}/>
+                <Route path='/redefinirsenha/*' element ={<RedefinirSenha/>}/>
                 
                 <Route path='/admin/' element = {<Admin/>}/>
                 

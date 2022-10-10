@@ -81,7 +81,9 @@ function Login() {
               required
             />
           </label>
-
+          <p>
+          Esqueceu sua senha? <Link to="/redefinirsenha">Recuperar senha</Link>
+        </p>
           {!loading && <button className={styles.botao}>Login</button>}
           {loading && (
             <button className={styles.botao} disabled>

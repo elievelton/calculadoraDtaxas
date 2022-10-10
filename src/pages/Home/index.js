@@ -459,8 +459,10 @@ function Home() {
                   
                   value = {valor}
                   onChange={({ target }) => {
-                    setValor(target.value);
-                  }}
+
+                      setValor(target.value);
+                    }
+                  }
                 />
                 
                 <label htmlFor="parcelamento">Parcelamento:</label>
