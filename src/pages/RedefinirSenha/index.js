@@ -18,7 +18,7 @@ export function RedefinirSenha() {
     const auth = getAuth();
     sendPasswordResetEmail(auth, email)
       .then((resultado) => {
-        console.log("Email enviado com sucesso!");
+        console.log("Email enviado com sucesso!!!");
       })
       .catch((err) => {
         setMensagem("Erro ao enviar o e-mail: " + err.message);
