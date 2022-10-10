@@ -51,3 +51,9 @@
         font-size: 1.7rem;
     }
 }
+.iniput{
+    background-color: #f5f5f5
+}
+.photoUrl img{
+    border-radius: 90%;
+}

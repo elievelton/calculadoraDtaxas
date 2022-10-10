@@ -2,13 +2,35 @@ import styles from "../Login/login.module.css";
 import React, { useState, useEffect } from "react";
 import { useAuthentication } from "../../hooks/userAuthentucation";
 import { Link } from "react-router-dom";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { app } from "../../firebase/config";
+
 
 function Login() {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(app);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const { login, error: authError, loading } = useAuthentication();
+  
+
+  const GoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromResult(error);
+      });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,8 +41,6 @@ function Login() {
       password,
     };
     const res = await login(user);
-
-    console.log(res);
   };
   useEffect(() => {
     if (authError) {
@@ -57,7 +77,6 @@ function Login() {
               value={password}
               type="password"
               name="senhaUser"
-              
               placeholder="Ensira sua senha"
               required
             />
@@ -70,6 +89,9 @@ function Login() {
             </button>
           )}
           {error && <p className="error">{error}</p>}
+          <button className={styles.google} onClick={GoogleLogin}>
+          <img src="\static\images\btn_google_signin_dark_focus_web@2x.png"/>
+          </button>
         </form>
       </div>
     </div>

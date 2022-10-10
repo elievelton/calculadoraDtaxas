@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 //Notificação de enviar mensagem
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { app } from "../../firebase/config";
+
 
 function Cadastro() {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(app);
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +30,21 @@ function Cadastro() {
       draggable: true,
       progress: undefined,
     });
+    const GoogleLogin = () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          const user = result.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.email;
+          const credential = GoogleAuthProvider.credentialFromResult(error);
+        });
+    };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -108,7 +128,7 @@ function Cadastro() {
               required
             />
           </label>
-
+          
           {!loading && (
             <button onClick={notify} className="btn">
               Cadastrar
@@ -134,6 +154,13 @@ function Cadastro() {
             draggable
             pauseOnHover
           />
+          <div className={styles.btGo}>
+          <span>Cadastrar com Google:</span>
+          <button className={styles.google} onClick={GoogleLogin}>
+          <img alt="teste" src="\static\images\btn_google_signin_dark_focus_web@2x.png"/>
+          </button>
+          </div>
+          
         </form>
       </div>
     </div>

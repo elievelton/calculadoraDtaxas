@@ -6,7 +6,9 @@
     "@emailjs/browser": "^3.6.2",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
+    "@mui/styled-engine-sc": "^5.10.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -22,6 +24,7 @@
     "react-select": "^5.4.0",
     "react-simple-image-slider": "^2.4.1",
     "react-toastify": "^9.0.8",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

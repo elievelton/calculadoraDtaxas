@@ -30,7 +30,7 @@ import ErrorN from "../ErrorN";
 function DashboardUser() {
   //hook usado para pegar a informação de quem está logado
   const { auth } = useAuthentication();
-  
+  // Colocando no estado o UID do usuario corrente
   const [userCorrente, setuserCorrente] = useState(auth.currentUser.uid);  
   
   const adm1 = "IndzODiLpaWm8h87kjgyy1gdx882";

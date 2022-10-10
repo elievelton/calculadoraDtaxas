@@ -7,6 +7,9 @@
     height: 100%;
     width: 100%;
 }
+.container span {
+    font-size : 1rem ;
+}
 
 .navbar{
     grid-area: navbar;

@@ -6,6 +6,7 @@ import { useInsertDocument } from "../../hooks/insertEmpresa";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect } from "react";
 import { DashFooter } from "../../components/DashFooter";
+import { useNavigate} from 'react-router-dom'
 
 const CadPlano = ({ className }) => {
   const [nome, setNome] = useState("");
@@ -64,6 +65,14 @@ const CadPlano = ({ className }) => {
   const [errorForm, setErrorForm] = React.useState("");
   //Hook responsável por inseirir os dados no Banco de dados
   const { insertDocument, response } = useInsertDocument("planos");
+  const nave = useNavigate();
+
+  function redirect(nave){
+    
+    return(nave("/paineldecontrole/listar/planos"))
+    
+
+  }
 
   function limpaDados() {
     setNome("");
@@ -120,7 +129,7 @@ const CadPlano = ({ className }) => {
   const notify = () =>
     toast.success("Plano cadastrado com sucesso!", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -151,8 +160,9 @@ const CadPlano = ({ className }) => {
       recebimento15,
       recebimento30,
     });
-    notify();
+    notify();    
     limpaDados();
+    setTimeout(redirect, 2000,nave)
   };
   
 
@@ -815,7 +825,7 @@ const CadPlano = ({ className }) => {
       <ToastContainer
         theme="colored"
         position="top-right"
-        autoClose={3000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

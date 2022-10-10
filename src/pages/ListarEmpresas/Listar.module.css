@@ -75,6 +75,10 @@
        
        font-size: 1.2rem !important;
     }
+    .excluirB{
+        
+        width: 100% !important;
+    }
     
     .buttons button,
     .buttons a{
@@ -91,20 +95,21 @@
         
         
     }
-
+    
     .buttons button{
         align-items: center !important;
-        padding: 8px !important;
-        
+        padding: 8px !important;       
         margin-top: 12px;
-        width: 95% !important;
+        width: 100% !important;
         margin-left: 4px !important;
+        
         
     }
     .buttons {
         flex-direction:column;
-        width: 100% !important;
-        margin-top: 5px;       
+        width: 100% ;
+        margin-top: 5px;
+              
         
     }
     .buttons a:hover{
@@ -183,4 +188,12 @@
     margin-left: 10px;
     align-items: center;
     font-size: 1.5rem;
+ }
+ .buttons2{
+    background-color: red !important;
+ }
+ .ModalE{
+    position: relative;
+    float: center;
+    background-color: green;
  }

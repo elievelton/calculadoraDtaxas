@@ -7,6 +7,7 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaRegEye, FaPlusCircle } from "react-icons/fa";
 import { DashFooter } from "../../components/DashFooter";
+import ModalExcluir from "../../components/ModalExcluir";
 
 const ListarEmpresas = ({ className }) => {
   const [dataPlanos, setDataPlanos] = useState([]);
@@ -31,22 +32,6 @@ const ListarEmpresas = ({ className }) => {
     getEmpresas();
   }, []);
 
-  //Funções para deletar empresa e plano precisa apenas do id
-  async function deletePlano(id) {
-    const userDoc = doc(db, "planos", id);
-    await deleteDoc(userDoc);
-  }
-  async function deleteEmpresa(id) {
-    const userDoc = doc(db, "empresas", id);
-    await deleteDoc(userDoc);
-    getEmpresas();
-  }
-  //função busca todos os planos de uma empresa e deleta
-  const buscaEmpresaFiltro = (chave) => {
-    dataPlanos
-      .filter((person) => person.reference === chave.toLowerCase())
-      .map((filteredPerson) => deletePlano(filteredPerson.id));
-  };
 
   return (
     <div className={`${style.lista} ${className}`}>
@@ -87,17 +72,13 @@ const ListarEmpresas = ({ className }) => {
                     <span>Add Plano</span>
                   </Link>
                 </div>
-                <button
-                  style={{ backgroundColor: "#ff8d8d" }}
-                  onClick={() => {
-                    deleteEmpresa(empresa.id);
-                    buscaEmpresaFiltro(empresa.chave);
-                  }}>
-                  <FaTrash />
-                </button>
+                
+
+              <ModalExcluir className={style.excluirB} id = {empresa.id} chave = {empresa.chave}/>
               </div>
             </li>
           );
+          
         })}
       </ul>
       <DashFooter/>
