@@ -30,8 +30,8 @@ function Cadastro() {
       draggable: true,
       progress: undefined,
     });
-    const GoogleLogin = () => {
-      signInWithPopup(auth, provider)
+     const GoogleLogin = async () => {
+      await signInWithPopup(auth, provider)
         .then((result) => {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
