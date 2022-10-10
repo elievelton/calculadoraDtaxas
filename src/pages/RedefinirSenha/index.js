@@ -1,15 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { sendPasswordResetEmail, getAuth } from "firebase/auth";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../firebase/config";
 import style from "./Senha.module.css";
 
 export function RedefinirSenha() {
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
-  const auth = getAuth();
 
   const nave = useNavigate();
 
@@ -17,15 +15,14 @@ export function RedefinirSenha() {
     return nave("/login");
   }
   function recuperarSenha() {
-   
-      sendPasswordResetEmail(email)
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
       .then((resultado) => {
-        console.log("Email enviado com sucesso!" + resultado);
+        console.log("Email enviado com sucesso!");
       })
       .catch((err) => {
         setMensagem("Erro ao enviar o e-mail: " + err.message);
       });
-    console.log(mensagem);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
