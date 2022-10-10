@@ -154,14 +154,15 @@ function Cadastro() {
             draggable
             pauseOnHover
           />
-          <div className={styles.btGo}>
+          
+          
+        </form>
+        <div className={styles.btGo}>
           <span>Cadastrar com Google:</span>
           <button className={styles.google} onClick={GoogleLogin}>
           <img alt="teste" src="\static\images\btn_google_signin_dark_focus_web@2x.png"/>
           </button>
           </div>
-          
-        </form>
       </div>
     </div>
   );

@@ -89,10 +89,10 @@ function Login() {
             </button>
           )}
           {error && <p className="error">{error}</p>}
+        </form>
           <button className={styles.google} onClick={GoogleLogin}>
           <img src="\static\images\btn_google_signin_dark_focus_web@2x.png"/>
           </button>
-        </form>
       </div>
     </div>
   );
