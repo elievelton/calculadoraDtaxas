@@ -33,7 +33,7 @@ export function RedefinirSenha() {
   //notificação de cadastro de empresa
   const notify = () =>
     toast.info(
-      "E-mail enviado com sucesso, verifique sua caixa de entrada ou spaw",
+      "E-mail enviado com sucesso, verifique sua caixa de entrada ou SPAM",
       {
         position: "top-center",
         autoClose: 6000,
