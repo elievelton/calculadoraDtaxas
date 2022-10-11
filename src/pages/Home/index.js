@@ -456,16 +456,18 @@ function Home() {
                 
                 <input
                   className={styles.inputcifrao}
-                  type="number"
+                  type="text"
                   name="valor"
                   id="valor"
                   min="0"
+                  
                   placeholder="ex: R$ 4257,89"
                   
                   value = {valor}
+                  maxlength="7"
                   onChange={({ target }) => {
 
-                      setValor((target.value.replace('-', '')));
+                      setValor((target.value.replace('-', '').replace(/[^0-9]/g, '')));
                     }
                   }
                 />
