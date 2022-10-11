@@ -33,7 +33,7 @@ function Footer() {
                     </ul>
                 </div>
             </div>
-            <p id="copy" className={styles.center} >@Direitos Reservados Calculadora de Taxas &copy;2022</p>
+            <p id="copy" className={styles.center} >@Direitos Reservados CalcT &copy;2022</p>
             <div className={styles.degrade2}>
 
             </div>
