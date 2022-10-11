@@ -465,7 +465,7 @@ function Home() {
                   value = {valor}
                   onChange={({ target }) => {
 
-                      setValor(Math.abs(target.value));
+                      setValor((target.value.replace('-', '')));
                     }
                   }
                 />
