@@ -509,11 +509,11 @@ function Home() {
                 </p>
           <div className={styles.container}>
             <div className={styles.containerImg}>
-                <img className = {styles.imgmaquininha} src ={bannerUrl} ></img>
+                <img className = {styles.imgmaquininha} src ={bannerUrl} alt='Banner'></img>
                 </div>
                 <div>
               <div className={styles.posicaobnt} >
-              <a href={link} target="_blank">
+              <a href={link} target="_blank" alt="link">
               <button className={styles.btn}>Adquirir Máquina</button>
               </a>
               </div>
