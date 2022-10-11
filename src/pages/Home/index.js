@@ -70,6 +70,10 @@ function Home() {
     getEmpresas();
   }, []);
 
+  // useEffect(()=>{
+  //   setSelecionarEmpresa(empresa[0].nome)
+  // }, [empresa])
+
   // função para calcular as taxas 
   function calculandotaxas([venda, valor, parcela, parcelamentodoPlano]) {
     
@@ -343,7 +347,8 @@ function Home() {
 
   
   function setActiveVenda({ target }) {
-    setVenda(target.id);
+    // selectPlano ? setVenda(target.id) : alert("Escolha um plano primeiro!");
+    setVenda(target.id)
   }
   //observador da função de calculo
   useEffect(() => {
@@ -413,12 +418,12 @@ function Home() {
                 </div>
                 <label htmlFor="tipovenda">Plano Para:</label>
                 <div className={styles.opcoes}>
-                  <button
+                  <button 
                     className={pessoa == 0 ? styles.btnActive : ""}
                     id="cpf">
                     Pessoa Física
                   </button>
-                  <button
+                  <button 
                     className={pessoa == 1 ? styles.btnActive : ""}
                     id="cnpj">
                     Pessoa Jurídica
@@ -433,13 +438,13 @@ function Home() {
                 )}
                 <label htmlFor="tipovenda">Escolha o tipo de venda:</label>
                 <div className={styles.opcoes}>
-                  <button
+                  <button disabled={selectPlano === ""}
                     className={venda === "credito" ? styles.btnActive : ""}
                     id="credito"
                     onClick={setActiveVenda}>
                     Crédito
                   </button>
-                  <button
+                  <button disabled={selectPlano === ""}
                     className={venda === "debito" ? styles.btnActive : ""}
                     id="debito"
                     onClick={setActiveVenda}>
@@ -460,7 +465,7 @@ function Home() {
                   value = {valor}
                   onChange={({ target }) => {
 
-                      setValor(target.value);
+                      setValor(Math.abs(target.value));
                     }
                   }
                 />
