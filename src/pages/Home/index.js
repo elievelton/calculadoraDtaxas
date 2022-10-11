@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 // import Box from "@mui/material/Box";
 import React from "react";
 
-
 import AwesomeSlider from "react-awesome-slider";
 import { FaCheckCircle } from "react-icons/fa";
 import "react-awesome-slider/dist/styles.css";
@@ -27,9 +26,11 @@ function Home() {
   const [taxaAplicada, setTaxaAplicada] = useState(0); // taxa que foi aplicada
   const [descontoAplicado, setDescontoAplicado] = useState(0); // desconto que foi aplicada
   const [notaReclameAqui, setNotaReclameAqui] = useState(0); // Nota do reclame aqui
-  const [melhorEmQue, setMelhorEmQue] = useState("Sem Destaques")
-  const [bannerUrl, setBannerUrl] = useState("https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg"); // url da máquinas de cartões
-  const[link, setLink] = useState("#");
+  const [melhorEmQue, setMelhorEmQue] = useState("Sem Destaques");
+  const [bannerUrl, setBannerUrl] = useState(
+    "https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg"
+  ); // url da máquinas de cartões
+  const [link, setLink] = useState("#");
   const [selectPlano, setSelectPlano] = useState(""); // estado dos plano selecionado
 
   const [parcelamentodoPlano, setParcelamentodoPlano] = useState([]); // taxas do parcelamento
@@ -49,7 +50,6 @@ function Home() {
     "11x",
     "12x",
   ];
-  
 
   // busca no banco de dados do firebase
   const empresaCollectionRef = collection(db, "empresas");
@@ -74,9 +74,8 @@ function Home() {
   //   setSelecionarEmpresa(empresa[0].nome)
   // }, [empresa])
 
-  // função para calcular as taxas 
+  // função para calcular as taxas
   function calculandotaxas([venda, valor, parcela, parcelamentodoPlano]) {
-    
     let valo = 0;
     valo = valo.toLocaleString("pt-BR", {
       style: "currency",
@@ -88,14 +87,14 @@ function Home() {
       currency: "BRL",
     });
     let taxaAtual = 0;
-    
+
     let desconto = 0;
-    desconto =  desconto.toLocaleString("pt-BR", {
+    desconto = desconto.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });
     let desc = 0;
-    desc =  desc.toLocaleString("pt-BR", {
+    desc = desc.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });
@@ -105,14 +104,14 @@ function Home() {
     let calc2 = parcelamentodoPlano[2];
 
     if (venda === "debito") {
-      valo = ((100 * valor) * (100 - calc[0]))/10000;
-      
+      valo = (100 * valor * (100 - calc[0])) / 10000;
+
       val = valo.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
       });
       taxaAtual = calc[0];
-      
+
       desc = valo - valor;
       desconto = desc.toLocaleString("pt-BR", {
         style: "currency",
@@ -121,7 +120,7 @@ function Home() {
     }
     if (venda === "credito") {
       if (parcela === "À vista") {
-        valo = ((100 * valor) * (100 - calc[1]))/10000;
+        valo = (100 * valor * (100 - calc[1])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -133,9 +132,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "2x") {
-        valo = ((100 * valor) * (100 - calc[2]))/10000;
+      } else if (parcela === "2x") {
+        valo = (100 * valor * (100 - calc[2])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -146,9 +144,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "3x") {
-        valo = ((100 * valor) * (100 - calc[3]))/10000;
+      } else if (parcela === "3x") {
+        valo = (100 * valor * (100 - calc[3])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -159,9 +156,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "4x") {
-        valo = ((100 * valor) * (100 - calc[4]))/10000;
+      } else if (parcela === "4x") {
+        valo = (100 * valor * (100 - calc[4])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -172,9 +168,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "5x") {
-        valo = ((100 * valor) * (100 - calc[5]))/10000;
+      } else if (parcela === "5x") {
+        valo = (100 * valor * (100 - calc[5])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -185,9 +180,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "6x") {
-        valo = ((100 * valor) * (100 - calc[6]))/10000;
+      } else if (parcela === "6x") {
+        valo = (100 * valor * (100 - calc[6])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -198,9 +192,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "7x") {
-        valo = ((100 * valor) * (100 - calc[7]))/10000;
+      } else if (parcela === "7x") {
+        valo = (100 * valor * (100 - calc[7])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -211,9 +204,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "8x") {
-        valo = ((100 * valor) * (100 - calc[8]))/10000;
+      } else if (parcela === "8x") {
+        valo = (100 * valor * (100 - calc[8])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -224,9 +216,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "9x") {
-        valo = ((100 * valor) * (100 - calc[9]))/10000;
+      } else if (parcela === "9x") {
+        valo = (100 * valor * (100 - calc[9])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -237,9 +228,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "10x") {
-        valo = ((100 * valor) * (100 - calc[10]))/10000;
+      } else if (parcela === "10x") {
+        valo = (100 * valor * (100 - calc[10])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -250,9 +240,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "11x") {
-        valo = ((100 * valor) * (100 - calc[11]))/10000;
+      } else if (parcela === "11x") {
+        valo = (100 * valor * (100 - calc[11])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -263,9 +252,8 @@ function Home() {
           style: "currency",
           currency: "BRL",
         });
-      }
-      else if (parcela === "12x") {
-        valo = ((100 * valor) * (100 - calc[12]))/10000;
+      } else if (parcela === "12x") {
+        valo = (100 * valor * (100 - calc[12])) / 10000;
         val = valo.toLocaleString("pt-BR", {
           style: "currency",
           currency: "BRL",
@@ -277,16 +265,13 @@ function Home() {
           currency: "BRL",
         });
       }
-      
-      
     }
     setValorAtualizado(val);
     setTaxaAplicada(taxaAtual);
     setDescontoAplicado(desconto);
   }
 
-  
-//Algumas filtragens
+  //Algumas filtragens
   const BuscaPlanoFiltro = () => {
     const data = dataPlanos.filter((plano) =>
       plano.reference.startsWith(selecionarEmpresa.toLowerCase())
@@ -294,30 +279,30 @@ function Home() {
     setBuscaPlano(data);
   };
   const buscaEmpresaFiltro = () => {
-    empresa.filter(person => person.chave ===selecionarEmpresa).map(filteredPerson => (
-      setNotaReclameAqui(filteredPerson.notaReclameAqui),
-      setBannerUrl(filteredPerson.bannerUrl),
-      setLink(filteredPerson.link)
-    ))
-    
+    empresa
+      .filter((person) => person.chave === selecionarEmpresa)
+      .map(
+        (filteredPerson) => (
+          setNotaReclameAqui(filteredPerson.notaReclameAqui),
+          setBannerUrl(filteredPerson.bannerUrl),
+          setLink(filteredPerson.link)
+        )
+      );
   };
   const buscaMelhorEmQue = () => {
-    empresa.filter(person => person.chave ===selecionarEmpresa).map(filteredPerson => (
-      setMelhorEmQue(filteredPerson.melhoremque)
-    ))
-    
+    empresa
+      .filter((person) => person.chave === selecionarEmpresa)
+      .map((filteredPerson) => setMelhorEmQue(filteredPerson.melhoremque));
   };
-
-  
 
   const setPlan = (e) => {
     setSelectPlano(e.nome);
-    const lista1 = Object.values(e.recebimento1)
-    const lista2 = Object.values(e.recebimento15)
-    const lista3 = Object.values(e.recebimento30)
+    const lista1 = Object.values(e.recebimento1);
+    const lista2 = Object.values(e.recebimento15);
+    const lista3 = Object.values(e.recebimento30);
     setParcelamentodoPlano([lista1, lista2, lista3]);
     setPessoa(e.tipo);
-    console.log("Lista1", lista1)
+    console.log("Lista1", lista1);
   };
 
   useEffect(() => {
@@ -332,8 +317,6 @@ function Home() {
       .then(setData);
   }, []);
 
-
-
   const handleLeftClick = (e) => {
     e.preventDefault();
     carousel.current.scrollLeft -= carousel.current.offsetWidth;
@@ -345,21 +328,19 @@ function Home() {
     carousel.current.scrollLeft += carousel.current.offsetWidth;
   };
 
-  
   function setActiveVenda({ target }) {
     // selectPlano ? setVenda(target.id) : alert("Escolha um plano primeiro!");
-    setVenda(target.id)
+    setVenda(target.id);
   }
   //observador da função de calculo
   useEffect(() => {
     calculandotaxas([venda, valor, parcela, parcelamentodoPlano]);
-  }, [venda,link,bannerUrl,valor, parcela, parcelamentodoPlano]);
+  }, [venda, link, bannerUrl, valor, parcela, parcelamentodoPlano]);
 
   if (!data || !data.length) return null;
 
   return (
     <>
-    
       <div className={styles.boxbanner}>
         <div className={styles.banner}>
           <AwesomeSlider className={styles.slider} animation="cubeAnimation">
@@ -380,14 +361,13 @@ function Home() {
                 onSubmit={(event) => {
                   event.preventDefault();
                 }}>
-                
                 <label htmlFor="empresa">Escolha a empresa:</label>
                 <select
                   value={selecionarEmpresa}
                   onChange={({ target }) => {
                     setSelecionarEmpresa(target.value);
                   }}>
-                  <option value="escolha" active ="True">
+                  <option value="escolha" active="True">
                     Escolha a empresa
                   </option>
                   {empresa &&
@@ -401,7 +381,6 @@ function Home() {
                   {buscaPlano &&
                     buscaPlano?.map((plan) => {
                       return (
-                        
                         <button
                           key={plan.id}
                           value={selectPlano}
@@ -411,19 +390,17 @@ function Home() {
                           }>
                           {plan.nome}
                         </button>
-                        
                       );
                     })}
-                    
                 </div>
                 <label htmlFor="tipovenda">Plano Para:</label>
                 <div className={styles.opcoes}>
-                  <button 
+                  <button
                     className={pessoa == 0 ? styles.btnActive : ""}
                     id="cpf">
                     Pessoa Física
                   </button>
-                  <button 
+                  <button
                     className={pessoa == 1 ? styles.btnActive : ""}
                     id="cnpj">
                     Pessoa Jurídica
@@ -438,40 +415,42 @@ function Home() {
                 )}
                 <label htmlFor="tipovenda">Escolha o tipo de venda:</label>
                 <div className={styles.opcoes}>
-                  <button disabled={selectPlano === ""}
+                  <button
+                    disabled={selectPlano === ""}
                     className={venda === "credito" ? styles.btnActive : ""}
                     id="credito"
                     onClick={setActiveVenda}>
                     Crédito
                   </button>
-                  <button disabled={selectPlano === ""}
+                  <button
+                    disabled={selectPlano === ""}
                     className={venda === "debito" ? styles.btnActive : ""}
                     id="debito"
                     onClick={setActiveVenda}>
                     Débito
                   </button>
                 </div>
-                
-                <label className = {styles.labelValor}htmlFor="valor">Valor da venda:</label>
-                
+
+                <label className={styles.labelValor} htmlFor="valor">
+                  Valor da venda:
+                </label>
+
                 <input
                   className={styles.inputcifrao}
                   type="text"
                   name="valor"
                   id="valor"
                   min="0"
-                  
                   placeholder="ex: R$ 4257,89"
-                  
-                  value = {valor}
+                  value={valor}
                   maxlength="7"
                   onChange={({ target }) => {
-
-                      setValor((target.value.replace('-', '').replace(/[^0-9]/g, '')));
-                    }
-                  }
+                    setValor(
+                      target.value.replace("-", "").replace(/[^0-9]/g, "")
+                    );
+                  }}
                 />
-                
+
                 <label htmlFor="parcelamento">Parcelamento:</label>
                 <select
                   value={parcela}
@@ -514,22 +493,28 @@ function Home() {
                   <FaCheckCircle />
                   Nota {notaReclameAqui} no reclame aqui
                 </p>
-          <div className={styles.container}>
-            <div className={styles.containerImg}>
-                <img className = {styles.imgmaquininha} src ={bannerUrl} alt='Banner'></img>
+                <div className={styles.container}>
+                  <div className={styles.containerImg}>
+                    <img
+                      className={styles.imgmaquininha}
+                      src={bannerUrl}
+                      alt="Banner"></img>
+                  </div>
+                  <div>
+                    <div className={styles.posicaobnt}>
+                      <a
+                        href={link}
+                        target="_blank"
+                        alt="link"
+                        rel="noreferrer">
+                        <button className={styles.btn}>Adquirir Máquina</button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div>
-              <div className={styles.posicaobnt} >
-              <a href={link} target="_blank" alt="link">
-              <button className={styles.btn}>Adquirir Máquina</button>
-              </a>
-              </div>
-              </div>
               </div>
             </div>
           </div>
-              </div>
-              
         </div>
       </div>
 
